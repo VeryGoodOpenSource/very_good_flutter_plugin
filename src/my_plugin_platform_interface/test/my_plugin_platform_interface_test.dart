@@ -1,7 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:my_plugin_platform_interface/my_plugin_platform_interface.dart';
 
-/// The MacOS implementation of [MyPluginPlatform].
 class MyPluginMock extends MyPluginPlatform {
   static const mockPlatformName = 'Mock';
 
