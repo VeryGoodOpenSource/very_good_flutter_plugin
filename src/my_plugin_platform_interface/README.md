@@ -2,9 +2,9 @@
 
 [![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
 
-A common platform interface for the `my_plugin_platform_interface` plugin.
+A common platform interface for the `my_plugin` plugin.
 
-This interface allows platform-specific implementations of the `my_plugin_platform_interface` plugin, as well as the plugin itself, to ensure they are supporting the same interface.
+This interface allows platform-specific implementations of the `my_plugin` plugin, as well as the plugin itself, to ensure they are supporting the same interface.
 
 # Usage
 
