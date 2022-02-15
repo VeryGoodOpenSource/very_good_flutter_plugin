@@ -1,4 +1,4 @@
-# my\_plugin\_ios
+# my_plugin_ios
 
 [![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
 
