@@ -1,4 +1,4 @@
-# my\_plugin\_macos
+# my_plugin_macos
 
 [![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
 
