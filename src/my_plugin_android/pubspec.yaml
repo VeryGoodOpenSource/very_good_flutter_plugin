@@ -1,0 +1,29 @@
+name: my_plugin_android
+description: Android implementation of the my_plugin plugin
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.14.0 <3.0.0"
+  flutter: ">=2.5.0"
+
+flutter:
+  plugin:
+    implements: my_plugin
+    platforms:
+      android:
+        package: com.example.my_plugin
+        pluginClass: MyPluginPlugin
+        dartPluginClass: MyPluginAndroid
+
+dependencies:
+  flutter:
+    sdk: flutter
+  my_plugin_platform_interface:
+    path: ../my_plugin_platform_interface
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  plugin_platform_interface: ^2.0.0
+  very_good_analysis: ^2.4.0
