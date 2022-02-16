@@ -10,7 +10,6 @@ class MyPluginWindows extends MyPluginPlatform {
 
   /// Registers this class as the default instance of [MyPluginPlatform]
   static void registerWith() {
-    print('registering Windows!');
     MyPluginPlatform.instance = MyPluginWindows();
   }
 
