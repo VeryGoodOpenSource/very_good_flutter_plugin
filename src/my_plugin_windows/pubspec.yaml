@@ -12,7 +12,7 @@ flutter:
     implements: my_plugin
     platforms:
       windows:
-        pluginClass: MyPluginPlugin
+        pluginClass: MyPluginWindows
         dartPluginClass: MyPluginWindows
 
 dependencies:
