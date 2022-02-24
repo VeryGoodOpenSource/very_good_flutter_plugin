@@ -11,14 +11,10 @@ G_BEGIN_DECLS
 #define FLUTTER_PLUGIN_EXPORT
 #endif
 
-typedef struct _MyPluginLinuxPlatform MyPluginLinuxPlatform;
-typedef struct {
-  GObjectClass parent_class;
-} MyPluginLinuxPlatformClass;
+G_DECLARE_FINAL_TYPE(FlMyPluginPlugin, fl_my_plugin_plugin, FL,
+                     MY_PLUGIN_PLUGIN, GObject)
 
-FLUTTER_PLUGIN_EXPORT GType my_plugin_linux_get_type();
-
-FLUTTER_PLUGIN_EXPORT void my_plugin_linux_register_with_registrar(
+FLUTTER_PLUGIN_EXPORT void my_plugin_plugin_register_with_registrar(
     FlPluginRegistrar* registrar);
 
 G_END_DECLS

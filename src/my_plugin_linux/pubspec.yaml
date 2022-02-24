@@ -12,6 +12,7 @@ flutter:
     implements: my_plugin
     platforms:
       linux:
+        pluginClass: MyPluginPlugin
         dartPluginClass: MyPluginLinux
 
 dependencies:
