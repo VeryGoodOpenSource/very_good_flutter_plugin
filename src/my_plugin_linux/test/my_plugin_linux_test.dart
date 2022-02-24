@@ -1,7 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:my_plugin_platform_interface/my_plugin_platform_interface.dart';
 import 'package:my_plugin_linux/my_plugin_linux.dart';
+import 'package:my_plugin_platform_interface/my_plugin_platform_interface.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
