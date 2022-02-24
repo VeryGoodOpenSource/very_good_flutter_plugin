@@ -12,37 +12,37 @@ class MyApp extends StatelessWidget {
   }
 }
 
-/// Demonstrates how to use the `getplatformName` method.
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  String? platformName;
+  String? _platformName;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('MyPlugin Demo')),
+      appBar: AppBar(title: const Text('MyPlugin Example')),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            platformName == null
-                ? const SizedBox.shrink()
-                : Text(
-                    'Platform Name: $platformName',
-                    style: Theme.of(context).textTheme.headline5,
-                  ),
+            if (_platformName == null)
+              const SizedBox.shrink()
+            else
+              Text(
+                'Platform Name: $_platformName',
+                style: Theme.of(context).textTheme.headline5,
+              ),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () async {
                 try {
                   final result = await getPlatformName();
-                  setState(() => platformName = result);
+                  setState(() => _platformName = result);
                 } catch (error) {
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
