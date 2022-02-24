@@ -62,7 +62,6 @@ FlMyPluginPlugin* fl_my_plugin_plugin_new(FlPluginRegistrar* registrar) {
 
 static void fl_my_plugin_plugin_init(FlMyPluginPlugin* self) {}
 
-
 void my_plugin_plugin_register_with_registrar(FlPluginRegistrar* registrar) {
   FlMyPluginPlugin* plugin = fl_my_plugin_plugin_new(registrar);
   g_object_unref(plugin);
