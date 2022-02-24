@@ -1,0 +1,25 @@
+name: my_plugin_linux
+description: Linux implementation of the my_plugin plugin
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+  flutter: ">=2.0.0"
+
+flutter:
+  plugin:
+    implements: my_plugin
+    platforms:
+      linux:
+        dartPluginClass: MyPluginLinux
+
+dependencies:
+  flutter:
+    sdk: flutter
+  my_plugin_platform_interface:
+    path: ../my_plugin_platform_interface
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
