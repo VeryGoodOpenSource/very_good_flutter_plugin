@@ -25,6 +25,8 @@ jobs:
 
     runs-on: ${{ matrix.os }}
 
+    working-directory: src/my_plugin/example
+
     strategy:
       matrix:
         os: [macos-latest, windows-2019, ubuntu-latest]
