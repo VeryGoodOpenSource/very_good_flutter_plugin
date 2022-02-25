@@ -22,20 +22,20 @@ jobs:
 
   e2e:
     needs: build
-    
+
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
         os: [macos-latest, windows-2019, ubuntu-latest]
-    
+
     steps:
       - uses: actions/checkout@v2
       - uses: subosito/flutter-action@v2
         with:
           channel: beta
       - run: |
-           flutter config --enable-windows-desktop
-           flutter config --enable-macos-desktop
-           flutter config --enable-linux-desktop
-           flutter test integration_test
+          flutter config --enable-windows-desktop
+          flutter config --enable-macos-desktop
+          flutter config --enable-linux-desktop
+          flutter test integration_test
