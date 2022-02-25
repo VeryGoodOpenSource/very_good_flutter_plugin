@@ -40,7 +40,14 @@ jobs:
         with:
           channel: beta
 
-      - name: "Integration Tests"
+      - name: Configure Linux
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: |
+          sudo apt install clang
+          sudo apt install ninja-build
+          sudo apt install libgtk-3-dev
+
+      - name: Integration Tests
         run: |
           flutter config --enable-windows-desktop
           flutter config --enable-macos-desktop
