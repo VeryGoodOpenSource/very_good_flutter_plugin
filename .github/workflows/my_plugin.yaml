@@ -19,3 +19,23 @@ jobs:
       flutter_channel: stable
       flutter_version: 2.10.1
       working_directory: src/my_plugin
+
+  e2e:
+    needs: build
+    
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [macos-latest, windows-2019, ubuntu-latest]
+    
+    steps:
+      - uses: actions/checkout@v1
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: beta
+      - run: |
+           flutter config --enable-windows-desktop
+           flutter config --enable-macos-desktop
+           flutter config --enable-linux-desktop
+           flutter test integration_test
