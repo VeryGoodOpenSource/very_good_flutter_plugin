@@ -25,7 +25,9 @@ jobs:
 
     runs-on: ${{ matrix.os }}
 
-    working-directory: src/my_plugin/example
+    defaults:
+      run:
+        working-directory: src/my_plugin/example
 
     strategy:
       matrix:
