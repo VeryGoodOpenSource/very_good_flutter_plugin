@@ -31,10 +31,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
       - uses: subosito/flutter-action@v2
         with:
           channel: beta
-      - run: |
+
+      - name: "Integration Tests"
+        run: |
           flutter config --enable-windows-desktop
           flutter config --enable-macos-desktop
           flutter config --enable-linux-desktop
