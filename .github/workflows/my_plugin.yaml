@@ -148,8 +148,16 @@ jobs:
       - name: Flutter Doctor
         run: flutter doctor -v
 
+      - name: Run Chromedriver
+        run: |
+          git clone https://github.com/flutter/web_installers.git
+          cd web_installers/packages/web_drivers
+          dart pub get
+          dart lib/web_driver_installer.dart chromedriver --install-only
+          ./chromedriver/chromedriver --port=4444 &
+
       - name: Integration Tests
-        run: flutter test integration_test -d chrome
+        run: flutter drive -v --target=test_driver/integration_test.dart -d web-server --browser-name=chrome
 
   windows:
     runs-on: windows-2019
@@ -167,7 +175,7 @@ jobs:
         run: flutter config --enable-windows-desktop
 
       - name: Flutter Doctor
-        run: flutter doctor -v
+        run: flutter doctor -v      
 
       - name: Integration Tests
         run: flutter test integration_test -d windows
