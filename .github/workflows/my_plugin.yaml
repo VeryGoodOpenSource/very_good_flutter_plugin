@@ -13,12 +13,12 @@ on:
       - "src/my_plugin/**"
 
 jobs:
-  # build:
-  #   uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
-  #   with:
-  #     flutter_channel: stable
-  #     flutter_version: 2.10.1
-  #     working_directory: src/my_plugin
+  build:
+    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
+    with:
+      flutter_channel: stable
+      flutter_version: 2.10.1
+      working_directory: src/my_plugin
 
   linux:
     runs-on: ubuntu-18.04
@@ -122,7 +122,7 @@ jobs:
         with:
           distribution: "temurin"
           java-version: "11"
-          
+
       - uses: subosito/flutter-action@v2
 
       - name: Flutter Doctor
@@ -136,7 +136,7 @@ jobs:
             ~/.android/avd/*
             ~/.android/adb*
           key: avd-29
-      
+
       - name: Cache AVD Snapshot
         if: steps.avd-cache.outputs.cache-hit != 'true'
         uses: reactivecircus/android-emulator-runner@v2
