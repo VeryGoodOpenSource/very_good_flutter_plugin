@@ -109,27 +109,27 @@ jobs:
       - name: Integration Tests
         run: flutter test integration_test -d iPhone
 
-android:
-  runs-on: macos-10.15
+  android:
+    runs-on: macos-10.15
 
-  defaults:
-    run:
-      working-directory: src/my_plugin/example
+    defaults:
+      run:
+        working-directory: src/my_plugin/example
 
-  steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-java@v2
-      with:
-        distribution: "temurin"
-        java-version: "11"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v2
+        with:
+          distribution: "temurin"
+          java-version: "11"
 
-    - uses: subosito/flutter-action@v2
+      - uses: subosito/flutter-action@v2
 
-    - name: Flutter Doctor
-      run: flutter doctor -v
+      - name: Flutter Doctor
+        run: flutter doctor -v
 
-    - name: Integration Tests
-      uses: reactivecircus/android-emulator-runner@v2
-      with:
-        api-level: 30
-        script: flutter test integration_test
+      - name: Integration Tests
+        uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 30
+          script: flutter test integration_test
