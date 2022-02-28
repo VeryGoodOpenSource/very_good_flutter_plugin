@@ -21,12 +21,12 @@ void main() {
 }
 
 String expectedPlatformName() {
+  if (isWeb) return 'Web';
   if (Platform.isAndroid) return 'Android';
   if (Platform.isIOS) return 'iOS';
   if (Platform.isLinux) return 'Linux';
   if (Platform.isMacOS) return 'MacOS';
   if (Platform.isWindows) return 'Windows';
-  if (isWeb) return 'Web';
   throw UnsupportedError('Unsupported platform ${Platform.operatingSystem}');
 }
 
