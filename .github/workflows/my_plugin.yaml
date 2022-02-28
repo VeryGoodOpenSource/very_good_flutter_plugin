@@ -150,7 +150,7 @@ jobs:
 
       - name: Run Chromedriver
         run: |
-          git clone https://github.com/flutter/web_installers.git
+          git clone https://github.com/felangel/web_installers
           cd web_installers/packages/web_drivers
           dart pub get
           dart lib/web_driver_installer.dart chromedriver --install-only
