@@ -128,7 +128,7 @@ jobs:
       - name: Flutter Doctor
         run: flutter doctor -v
 
-      - name: AVD cache
+      - name: AVD Cache
         uses: actions/cache@v2
         id: avd-cache
         with:
