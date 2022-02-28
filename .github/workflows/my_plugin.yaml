@@ -20,95 +20,6 @@ jobs:
       flutter_version: 2.10.1
       working_directory: src/my_plugin
 
-  linux:
-    runs-on: ubuntu-18.04
-
-    defaults:
-      run:
-        working-directory: src/my_plugin/example
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - uses: subosito/flutter-action@v2
-
-      - name: Install Dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libgtk-3-dev libx11-dev pkg-config cmake ninja-build libblkid-dev liblzma-dev
-
-      - name: Enable desktop support
-        run: flutter config --enable-linux-desktop
-
-      - name: Flutter Doctor
-        run: flutter doctor -v
-
-      - name: Integration Tests
-        run: xvfb-run flutter test integration_test -d linux
-
-  windows:
-    runs-on: windows-2019
-
-    defaults:
-      run:
-        working-directory: src/my_plugin/example
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - uses: subosito/flutter-action@v2
-
-      - name: Enable desktop support
-        run: flutter config --enable-windows-desktop
-
-      - name: Flutter Doctor
-        run: flutter doctor -v
-
-      - name: Integration Tests
-        run: flutter test integration_test -d windows
-
-  macos:
-    runs-on: macos-10.15
-
-    defaults:
-      run:
-        working-directory: src/my_plugin/example
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - uses: subosito/flutter-action@v2
-
-      - name: Enable desktop support
-        run: flutter config --enable-macos-desktop
-
-      - name: Flutter Doctor
-        run: flutter doctor -v
-
-      - name: Integration Tests
-        run: flutter test integration_test -d macos
-
-  ios:
-    runs-on: macos-10.15
-
-    defaults:
-      run:
-        working-directory: src/my_plugin/example
-
-    steps:
-      - uses: actions/checkout@v2
-
-      - uses: subosito/flutter-action@v2
-
-      - name: Flutter Doctor
-        run: flutter doctor -v
-
-      - name: Start Simulator
-        run: open -a Simulator.app
-
-      - name: Integration Tests
-        run: flutter test integration_test -d iPhone
-
   android:
     runs-on: macos-10.15
 
@@ -153,3 +64,118 @@ jobs:
           api-level: 29
           script: flutter test integration_test
           working-directory: src/my_plugin/example
+
+  ios:
+    runs-on: macos-10.15
+
+    defaults:
+      run:
+        working-directory: src/my_plugin/example
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: subosito/flutter-action@v2
+
+      - name: Flutter Doctor
+        run: flutter doctor -v
+
+      - name: Start Simulator
+        run: open -a Simulator.app
+
+      - name: Integration Tests
+        run: flutter test integration_test -d iPhone
+
+  linux:
+    runs-on: ubuntu-18.04
+
+    defaults:
+      run:
+        working-directory: src/my_plugin/example
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: subosito/flutter-action@v2
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev libx11-dev pkg-config cmake ninja-build libblkid-dev liblzma-dev
+
+      - name: Enable desktop support
+        run: flutter config --enable-linux-desktop
+
+      - name: Flutter Doctor
+        run: flutter doctor -v
+
+      - name: Integration Tests
+        run: xvfb-run flutter test integration_test -d linux
+
+  macos:
+    runs-on: macos-10.15
+
+    defaults:
+      run:
+        working-directory: src/my_plugin/example
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: subosito/flutter-action@v2
+
+      - name: Enable desktop support
+        run: flutter config --enable-macos-desktop
+
+      - name: Flutter Doctor
+        run: flutter doctor -v
+
+      - name: Integration Tests
+        run: flutter test integration_test -d macos
+
+  web:
+    runs-on: macos-10.15
+
+    defaults:
+      run:
+        working-directory: src/my_plugin/example
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: subosito/flutter-action@v2
+
+      - name: Flutter Doctor
+        run: flutter doctor -v
+
+      - name: Run Chromedriver
+        run: |
+          git clone https://github.com/felangel/web_installers
+          cd web_installers/packages/web_drivers
+          dart pub get
+          dart lib/web_driver_installer.dart chromedriver --install-only
+          ./chromedriver/chromedriver --port=4444 &
+
+      - name: Integration Tests
+        run: flutter drive --driver test_driver/integration_test.dart --target integration_test/app_test.dart -d web-server --browser-name=chrome
+
+  windows:
+    runs-on: windows-2019
+
+    defaults:
+      run:
+        working-directory: src/my_plugin/example
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: subosito/flutter-action@v2
+
+      - name: Enable desktop support
+        run: flutter config --enable-windows-desktop
+
+      - name: Flutter Doctor
+        run: flutter doctor -v      
+
+      - name: Integration Tests
+        run: flutter test integration_test -d windows

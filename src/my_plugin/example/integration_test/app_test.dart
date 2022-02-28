@@ -21,6 +21,7 @@ void main() {
 }
 
 String expectedPlatformName() {
+  if (isWeb) return 'Web';
   if (Platform.isAndroid) return 'Android';
   if (Platform.isIOS) return 'iOS';
   if (Platform.isLinux) return 'Linux';
@@ -28,3 +29,5 @@ String expectedPlatformName() {
   if (Platform.isWindows) return 'Windows';
   throw UnsupportedError('Unsupported platform ${Platform.operatingSystem}');
 }
+
+bool get isWeb => identical(0, 0.0);

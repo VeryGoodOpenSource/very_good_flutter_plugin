@@ -18,6 +18,8 @@ flutter:
         default_package: my_plugin_macos
       linux:
         default_package: my_plugin_linux
+      web:
+        default_package: my_plugin_web
       windows:
         default_package: my_plugin_windows
 
@@ -34,6 +36,8 @@ dependencies:
     path: ../my_plugin_macos
   my_plugin_platform_interface:
     path: ../my_plugin_platform_interface
+  my_plugin_web:
+    path: ../my_plugin_web
   my_plugin_windows:
     path: ../my_plugin_windows
 
