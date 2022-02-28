@@ -1,16 +1,11 @@
-@TestOn('chrome')
-
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 import 'package:my_plugin_platform_interface/my_plugin_platform_interface.dart';
 import 'package:my_plugin_web/my_plugin_web.dart';
-
-class FakeRegistrar extends Fake implements Registrar {}
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  group('MyPluginMacOS', () {
+  group('MyPluginWeb', () {
     const kPlatformName = 'Web';
     late MyPluginWeb myPlugin;
 
@@ -19,7 +14,7 @@ void main() {
     });
 
     test('can be registered', () {
-      MyPluginWeb.registerWith(FakeRegistrar());
+      MyPluginWeb.registerWith();
       expect(MyPluginPlatform.instance, isA<MyPluginWeb>());
     });
 
