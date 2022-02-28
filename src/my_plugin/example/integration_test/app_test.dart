@@ -26,5 +26,8 @@ String expectedPlatformName() {
   if (Platform.isLinux) return 'Linux';
   if (Platform.isMacOS) return 'MacOS';
   if (Platform.isWindows) return 'Windows';
+  if (isWeb) return 'Web';
   throw UnsupportedError('Unsupported platform ${Platform.operatingSystem}');
 }
+
+bool get isWeb => identical(0, 0.0);
