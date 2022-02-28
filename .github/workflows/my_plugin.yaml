@@ -120,8 +120,8 @@ android:
     - uses: actions/checkout@v2
     - uses: actions/setup-java@v2
       with:
-        distribution: 'temurin'
-        java-version: '11'
+        distribution: "temurin"
+        java-version: "11"
 
     - uses: subosito/flutter-action@v2
 
@@ -130,6 +130,6 @@ android:
 
     - name: Integration Tests
       uses: reactivecircus/android-emulator-runner@v2
-        with:
-          api-level: 30
-          script: flutter test integration_test
+      with:
+        api-level: 30
+        script: flutter test integration_test
