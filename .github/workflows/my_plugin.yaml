@@ -143,7 +143,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: subosito/flutter-action@v2      
+      - uses: subosito/flutter-action@v2
 
       - name: Flutter Doctor
         run: flutter doctor -v
