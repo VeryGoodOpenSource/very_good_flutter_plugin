@@ -155,7 +155,7 @@ extension on File {
       '.wav',
       '.ttf'
     };
-    final extension = path.extension(this.path);
-    return extensions.contains(extension);
+    final ext = path.extension(this.path);
+    return extensions.contains(ext);
   }
 }
