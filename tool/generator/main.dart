@@ -1,8 +1,23 @@
 import 'dart:io';
 import 'package:path/path.dart' as path;
 
+final _githubPath = path.join('.github');
 final _sourcePath = path.join('src');
 final _targetPath = path.join('brick', '__brick__');
+final _androidPath = path.join(_targetPath, 'my_plugin_android', 'android');
+final _androidKotlinPath = path.join(_androidPath, 'src', 'main', 'kotlin');
+final _sourceMyPluginKtPath = path.join(
+  _androidKotlinPath,
+  'com',
+  'example',
+  'my_plugin',
+  'MyPluginPlugin.kt',
+);
+final _targetMyPluginKtPath = path.join(
+  _androidKotlinPath,
+  '{{#pathCase}}{{org_name}}{{/pathCase}}',
+  '{{#pascalCase}}{{project_name}}{{/pascalCase}}Plugin.kt',
+);
 final year = DateTime.now().year;
 final copyrightHeader = '''
 // Copyright (c) $year, Very Good Ventures
@@ -13,6 +28,16 @@ final copyrightHeader = '''
 // https://opensource.org/licenses/MIT.
 ''';
 
+final excludedFiles = [
+  path.join(
+    _targetPath,
+    '.github',
+    'workflows',
+    'generate_template.yaml',
+  ),
+  path.join(_targetPath, '.github', 'CODEOWNERS'),
+];
+
 void main() async {
   // Remove Previously Generated Files
   final targetDir = Directory(_targetPath);
@@ -21,7 +46,20 @@ void main() async {
   }
 
   // Copy Project Files
-  await Shell.cp(_sourcePath, _targetPath);
+  await Future.wait([
+    Shell.cp(_sourcePath, _targetPath),
+    Shell.cp(_githubPath, path.join(_targetPath)),
+    () async {
+      await Shell.mkdir(File(_targetMyPluginKtPath).parent.path);
+      await Shell.cp(_sourceMyPluginKtPath, _targetMyPluginKtPath);
+      await Shell.rm(File(_sourceMyPluginKtPath).parent.parent.path);
+    }()
+  ]);
+
+  // Remove excluded files
+  await Future.wait(
+    excludedFiles.map((file) => File(file).delete(recursive: true)),
+  );
 
   await Future.wait(
     Directory(_targetPath)
@@ -42,6 +80,12 @@ void main() async {
       final contents = await file.readAsString();
       final templatedContents = contents
           .replaceAll(
+            'com.example.my_plugin',
+            path.isWithin(_androidPath, file.path)
+                ? '{{#dotCase}}{{org_name}}{{/dotCase}}.{{#snakeCase}}{{project_name}}{{/snakeCase}}'
+                : '{{#dotCase}}{{org_name}}{{/dotCase}}.{{#paramCase}}{{project_name}}{{/paramCase}}',
+          )
+          .replaceAll(
             'my_plugin',
             '{{#snakeCase}}{{project_name}}{{/snakeCase}}',
           )
@@ -61,11 +105,20 @@ void main() async {
 
       /// Template file paths
       final fileSegments = file.path.split('/').sublist(2);
-      if (fileSegments.any((e) => e.contains('my_plugin'))) {
-        final newPathSegment = fileSegments.join('/').replaceAll(
-              'my_plugin',
-              '{{#snakeCase}}{{project_name}}{{/snakeCase}}',
-            );
+      if (fileSegments
+          .any((e) => e.contains('my_plugin') || e.contains('MyPlugin'))) {
+        final newSegments = fileSegments.map((e) {
+          return e
+              .replaceAll(
+                'MyPlugin',
+                '{{#pascalCase}}{{project_name}}{{/pascalCase}}',
+              )
+              .replaceAll(
+                'my_plugin',
+                '{{#snakeCase}}{{project_name}}{{/snakeCase}}',
+              );
+        });
+        final newPathSegment = newSegments.join('/');
         final newPath = path.join(_targetPath, newPathSegment);
         final newFile = File(newPath)..createSync(recursive: true);
         newFile.writeAsStringSync(templatedContents);
@@ -93,6 +146,10 @@ void main() async {
 class Shell {
   static Future<void> cp(String source, String destination) {
     return _Cmd.run('cp', ['-rf', source, destination]);
+  }
+
+  static Future<void> rm(String source) {
+    return _Cmd.run('rm', ['-rf', source]);
   }
 
   static Future<void> mkdir(String destination) {
