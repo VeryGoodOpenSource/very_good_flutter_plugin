@@ -68,7 +68,6 @@ void main() async {
         .map((_) async {
       var file = _;
       if (!file.existsSync()) return;
-      if (file.isAsset()) return;
 
       // Add copyright header to all .dart files
       if (path.extension(file.path) == '.dart') {
@@ -77,31 +76,34 @@ void main() async {
       }
 
       // Template File Contents
-      final contents = await file.readAsString();
-      final templatedContents = contents
-          .replaceAll(
-            'com.example.my_plugin',
-            path.isWithin(_androidPath, file.path)
-                ? '{{#dotCase}}{{org_name}}{{/dotCase}}.{{#snakeCase}}{{project_name}}{{/snakeCase}}'
-                : '{{#dotCase}}{{org_name}}{{/dotCase}}.{{#paramCase}}{{project_name}}{{/paramCase}}',
-          )
-          .replaceAll(
-            'my_plugin',
-            '{{#snakeCase}}{{project_name}}{{/snakeCase}}',
-          )
-          .replaceAll(
-            'my-plugin',
-            '{{#paramCase}}{{project_name}}{{/paramCase}}',
-          )
-          .replaceAll(
-            'MyPlugin',
-            '{{#pascalCase}}{{project_name}}{{/pascalCase}}',
-          )
-          .replaceAll(
-            'A very good Flutter federated plugin',
-            '{{{description}}}',
-          );
-      file = await file.writeAsString(templatedContents);
+      final contents =
+          file.isAsset() ? await file.readAsBytes() : await file.readAsString();
+      final templatedContents = (contents is String)
+          ? contents
+              .replaceAll(
+                'com.example.my_plugin',
+                '{{#dotCase}}{{org_name}}{{/dotCase}}',
+              )
+              .replaceAll(
+                'my_plugin',
+                '{{#snakeCase}}{{project_name}}{{/snakeCase}}',
+              )
+              .replaceAll(
+                'my-plugin',
+                '{{#paramCase}}{{project_name}}{{/paramCase}}',
+              )
+              .replaceAll(
+                'MyPlugin',
+                '{{#pascalCase}}{{project_name}}{{/pascalCase}}',
+              )
+              .replaceAll(
+                'A very good Flutter federated plugin',
+                '{{{description}}}',
+              )
+          : contents;
+      file = templatedContents is String
+          ? await file.writeAsString(templatedContents)
+          : await file.writeAsBytes(templatedContents as List<int>);
 
       /// Template file paths
       final fileSegments = file.path.split('/').sublist(2);
@@ -121,7 +123,9 @@ void main() async {
         final newPathSegment = newSegments.join('/');
         final newPath = path.join(_targetPath, newPathSegment);
         final newFile = File(newPath)..createSync(recursive: true);
-        newFile.writeAsStringSync(templatedContents);
+        templatedContents is String
+            ? newFile.writeAsStringSync(templatedContents)
+            : newFile.writeAsBytesSync(templatedContents as List<int>);
         file = newFile;
       }
     }),
