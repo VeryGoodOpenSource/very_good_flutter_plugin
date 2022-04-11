@@ -3,7 +3,7 @@ description: A very good federated Flutter plugin.
 version: 0.1.0+1
 
 environment:
-  mason: ">=0.1.0-dev <0.1.0"
+  mason: ">=0.1.0-dev.15 <0.1.0"
 
 vars:
   project_name:
