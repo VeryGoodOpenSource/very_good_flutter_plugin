@@ -97,6 +97,10 @@ void main() async {
                 '{{#pascalCase}}{{project_name}}{{/pascalCase}}',
               )
               .replaceAll(
+                'myPlugin',
+                '{{#camelCase}}{{project_name}}{{/camelCase}}',
+              )
+              .replaceAll(
                 'A very good Flutter federated plugin',
                 '{{{description}}}',
               )
