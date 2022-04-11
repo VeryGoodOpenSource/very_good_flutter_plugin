@@ -15,8 +15,8 @@ final _sourceMyPluginKtPath = path.join(
 );
 final _targetMyPluginKtPath = path.join(
   _androidKotlinPath,
-  '{{#pathCase}}{{org_name}}{{/pathCase}}',
-  '{{#pascalCase}}{{project_name}}{{/pascalCase}}Plugin.kt',
+  '{{org_name.pathCase()}}',
+  '{{project_name.pascalCase()}}Plugin.kt',
 );
 final year = DateTime.now().year;
 final copyrightHeader = '''
@@ -80,26 +80,11 @@ void main() async {
           file.isAsset() ? await file.readAsBytes() : await file.readAsString();
       final templatedContents = (contents is String)
           ? contents
-              .replaceAll(
-                'com.example.my_plugin',
-                '{{#dotCase}}{{org_name}}{{/dotCase}}',
-              )
-              .replaceAll(
-                'my_plugin',
-                '{{#snakeCase}}{{project_name}}{{/snakeCase}}',
-              )
-              .replaceAll(
-                'my-plugin',
-                '{{#paramCase}}{{project_name}}{{/paramCase}}',
-              )
-              .replaceAll(
-                'MyPlugin',
-                '{{#pascalCase}}{{project_name}}{{/pascalCase}}',
-              )
-              .replaceAll(
-                'myPlugin',
-                '{{#camelCase}}{{project_name}}{{/camelCase}}',
-              )
+              .replaceAll('com.example.my_plugin', '{{org_name.dotCase()}}')
+              .replaceAll('my_plugin', '{{project_name.snakeCase()}}')
+              .replaceAll('my-plugin', '{{project_name.paramCase()}}')
+              .replaceAll('MyPlugin', '{{project_name.pascalCase()}}')
+              .replaceAll('myPlugin', '{{project_name.camelCase()}}')
               .replaceAll(
                 'A very good Flutter federated plugin',
                 '{{{description}}}',
@@ -115,14 +100,8 @@ void main() async {
           .any((e) => e.contains('my_plugin') || e.contains('MyPlugin'))) {
         final newSegments = fileSegments.map((e) {
           return e
-              .replaceAll(
-                'MyPlugin',
-                '{{#pascalCase}}{{project_name}}{{/pascalCase}}',
-              )
-              .replaceAll(
-                'my_plugin',
-                '{{#snakeCase}}{{project_name}}{{/snakeCase}}',
-              );
+              .replaceAll('MyPlugin', '{{project_name.pascalCase()}}')
+              .replaceAll('my_plugin', '{{project_name.snakeCase()}}');
         });
         final newPathSegment = newSegments.join('/');
         final newPath = path.join(_targetPath, newPathSegment);
