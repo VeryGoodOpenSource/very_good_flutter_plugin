@@ -1,0 +1,49 @@
+name: {{project_name.snakeCase()}}
+description: {{{description}}}
+version: 0.1.0+1
+publish_to: none
+
+environment:
+  sdk: ">=2.16.0 <3.0.0"
+  flutter: ">=2.10.0"
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        default_package: {{project_name.snakeCase()}}_android
+      ios:
+        default_package: {{project_name.snakeCase()}}_ios
+      macos:
+        default_package: {{project_name.snakeCase()}}_macos
+      linux:
+        default_package: {{project_name.snakeCase()}}_linux
+      web:
+        default_package: {{project_name.snakeCase()}}_web
+      windows:
+        default_package: {{project_name.snakeCase()}}_windows
+
+dependencies:
+  flutter:
+    sdk: flutter
+  {{project_name.snakeCase()}}_android:
+    path: ../{{project_name.snakeCase()}}_android
+  {{project_name.snakeCase()}}_ios:
+    path: ../{{project_name.snakeCase()}}_ios
+  {{project_name.snakeCase()}}_linux:
+    path: ../{{project_name.snakeCase()}}_linux
+  {{project_name.snakeCase()}}_macos:
+    path: ../{{project_name.snakeCase()}}_macos
+  {{project_name.snakeCase()}}_platform_interface:
+    path: ../{{project_name.snakeCase()}}_platform_interface
+  {{project_name.snakeCase()}}_web:
+    path: ../{{project_name.snakeCase()}}_web
+  {{project_name.snakeCase()}}_windows:
+    path: ../{{project_name.snakeCase()}}_windows
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  mocktail: ^0.2.0
+  plugin_platform_interface: ^2.0.0
+  very_good_analysis: ^2.4.0
