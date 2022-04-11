@@ -1,1 +1,0 @@
-rootProject.name = '{{#snakeCase}}{{project_name}}{{/snakeCase}}_android'
