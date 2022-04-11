@@ -18,11 +18,11 @@ class {{#pascalCase}}{{project_name}}{{/pascalCase}}Mock extends {{#pascalCase}}
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
   group('{{#pascalCase}}{{project_name}}{{/pascalCase}}PlatformInterface', () {
-    late {{#pascalCase}}{{project_name}}{{/pascalCase}}Platform myPluginPlatform;
+    late {{#pascalCase}}{{project_name}}{{/pascalCase}}Platform {{#camelCase}}{{project_name}}{{/camelCase}}Platform;
 
     setUp(() {
-      myPluginPlatform = {{#pascalCase}}{{project_name}}{{/pascalCase}}Mock();
-      {{#pascalCase}}{{project_name}}{{/pascalCase}}Platform.instance = myPluginPlatform;
+      {{#camelCase}}{{project_name}}{{/camelCase}}Platform = {{#pascalCase}}{{project_name}}{{/pascalCase}}Mock();
+      {{#pascalCase}}{{project_name}}{{/pascalCase}}Platform.instance = {{#camelCase}}{{project_name}}{{/camelCase}}Platform;
     });
 
     group('getPlatformName', () {

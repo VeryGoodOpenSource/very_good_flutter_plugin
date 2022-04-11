@@ -19,11 +19,11 @@ void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
   group('{{#pascalCase}}{{project_name}}{{/pascalCase}}', () {
-    late {{#pascalCase}}{{project_name}}{{/pascalCase}}Platform myPluginPlatform;
+    late {{#pascalCase}}{{project_name}}{{/pascalCase}}Platform {{#camelCase}}{{project_name}}{{/camelCase}}Platform;
 
     setUp(() {
-      myPluginPlatform = Mock{{#pascalCase}}{{project_name}}{{/pascalCase}}Platform();
-      {{#pascalCase}}{{project_name}}{{/pascalCase}}Platform.instance = myPluginPlatform;
+      {{#camelCase}}{{project_name}}{{/camelCase}}Platform = Mock{{#pascalCase}}{{project_name}}{{/pascalCase}}Platform();
+      {{#pascalCase}}{{project_name}}{{/pascalCase}}Platform.instance = {{#camelCase}}{{project_name}}{{/camelCase}}Platform;
     });
 
     group('getPlatformName', () {
@@ -31,7 +31,7 @@ void main() {
           () async {
         const platformName = '__test_platform__';
         when(
-          () => myPluginPlatform.getPlatformName(),
+          () => {{#camelCase}}{{project_name}}{{/camelCase}}Platform.getPlatformName(),
         ).thenAnswer((_) async => platformName);
 
         final actualPlatformName = await getPlatformName();
@@ -41,7 +41,7 @@ void main() {
       test('throws exception when platform implementation is missing',
           () async {
         when(
-          () => myPluginPlatform.getPlatformName(),
+          () => {{#camelCase}}{{project_name}}{{/camelCase}}Platform.getPlatformName(),
         ).thenAnswer((_) async => null);
 
         expect(getPlatformName, throwsException);
