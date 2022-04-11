@@ -14,10 +14,10 @@ void main() {
 
   group('{{#pascalCase}}{{project_name}}{{/pascalCase}}Web', () {
     const kPlatformName = 'Web';
-    late {{#pascalCase}}{{project_name}}{{/pascalCase}}Web myPlugin;
+    late {{#pascalCase}}{{project_name}}{{/pascalCase}}Web {{#camelCase}}{{project_name}}{{/camelCase}};
 
     setUp(() async {
-      myPlugin = {{#pascalCase}}{{project_name}}{{/pascalCase}}Web();
+      {{#camelCase}}{{project_name}}{{/camelCase}} = {{#pascalCase}}{{project_name}}{{/pascalCase}}Web();
     });
 
     test('can be registered', () {
@@ -26,7 +26,7 @@ void main() {
     });
 
     test('getPlatformName returns correct name', () async {
-      final name = await myPlugin.getPlatformName();
+      final name = await {{#camelCase}}{{project_name}}{{/camelCase}}.getPlatformName();
       expect(name, equals(kPlatformName));
     });
   });

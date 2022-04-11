@@ -15,15 +15,15 @@ void main() {
 
   group('{{#pascalCase}}{{project_name}}{{/pascalCase}}Linux', () {
     const kPlatformName = 'Linux';
-    late {{#pascalCase}}{{project_name}}{{/pascalCase}}Linux myPlugin;
+    late {{#pascalCase}}{{project_name}}{{/pascalCase}}Linux {{#camelCase}}{{project_name}}{{/camelCase}};
     late List<MethodCall> log;
 
     setUp(() async {
-      myPlugin = {{#pascalCase}}{{project_name}}{{/pascalCase}}Linux();
+      {{#camelCase}}{{project_name}}{{/camelCase}} = {{#pascalCase}}{{project_name}}{{/pascalCase}}Linux();
 
       log = <MethodCall>[];
       TestDefaultBinaryMessengerBinding.instance!.defaultBinaryMessenger
-          .setMockMethodCallHandler(myPlugin.methodChannel, (methodCall) async {
+          .setMockMethodCallHandler({{#camelCase}}{{project_name}}{{/camelCase}}.methodChannel, (methodCall) async {
         log.add(methodCall);
         switch (methodCall.method) {
           case 'getPlatformName':
@@ -40,7 +40,7 @@ void main() {
     });
 
     test('getPlatformName returns correct name', () async {
-      final name = await myPlugin.getPlatformName();
+      final name = await {{#camelCase}}{{project_name}}{{/camelCase}}.getPlatformName();
       expect(
         log,
         <Matcher>[isMethodCall('getPlatformName', arguments: null)],
