@@ -52,7 +52,7 @@ A custom plugin can be generated via the `create` command:
 very_good create my_plugin -t flutter_plugin
 ```
 
-A custom description and org name can be also be provided via command line options
+A custom description and org name can be also be provided via:
 
 ```sh
 very_good create my_plugin -t flutter_plugin --desc "My custom description" --org-name com.example.my_plugin
