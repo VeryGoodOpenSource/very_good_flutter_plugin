@@ -1,6 +1,40 @@
 import 'dart:io';
 import 'package:path/path.dart' as path;
 
+const _pluginDependencies = '''
+  {{project_name.snakeCase()}}_android:
+    path: ../{{project_name.snakeCase()}}_android
+  {{project_name.snakeCase()}}_ios:
+    path: ../{{project_name.snakeCase()}}_ios
+  {{project_name.snakeCase()}}_linux:
+    path: ../{{project_name.snakeCase()}}_linux
+  {{project_name.snakeCase()}}_macos:
+    path: ../{{project_name.snakeCase()}}_macos
+  {{project_name.snakeCase()}}_platform_interface:
+    path: ../{{project_name.snakeCase()}}_platform_interface
+  {{project_name.snakeCase()}}_web:
+    path: ../{{project_name.snakeCase()}}_web
+  {{project_name.snakeCase()}}_windows:
+    path: ../{{project_name.snakeCase()}}_windows''';
+
+const _pluginPlatforms = '''
+flutter:
+  plugin:
+    platforms:
+      android:
+        default_package: {{project_name.snakeCase()}}_android
+      ios:
+        default_package: {{project_name.snakeCase()}}_ios
+      macos:
+        default_package: {{project_name.snakeCase()}}_macos
+      linux:
+        default_package: {{project_name.snakeCase()}}_linux
+      web:
+        default_package: {{project_name.snakeCase()}}_web
+      windows:
+        default_package: {{project_name.snakeCase()}}_windows''';
+
+final _staticPath = path.join('tool', 'generator', 'static');
 final _githubPath = path.join('.github');
 final _sourcePath = path.join('src');
 final _targetPath = path.join('brick', '__brick__');
@@ -28,6 +62,15 @@ final copyrightHeader = '''
 // https://opensource.org/licenses/MIT.
 ''';
 
+const platforms = [
+  'android',
+  'ios',
+  'linux',
+  'macos',
+  'web',
+  'windows',
+];
+
 final excludedFiles = [
   path.join(
     _targetPath,
@@ -49,6 +92,7 @@ void main() async {
   await Future.wait([
     Shell.cp(_sourcePath, _targetPath),
     Shell.cp(_githubPath, path.join(_targetPath)),
+    Shell.cp('$_staticPath/', _targetPath),
     () async {
       await Shell.mkdir(File(_targetMyPluginKtPath).parent.path);
       await Shell.cp(_sourceMyPluginKtPath, _targetMyPluginKtPath);
@@ -60,6 +104,20 @@ void main() async {
   await Future.wait(
     excludedFiles.map((file) => File(file).delete(recursive: true)),
   );
+
+  // Add conditionals to platforms
+  for (final platform in platforms) {
+    final directoryPath = path.join(_targetPath, 'my_plugin_$platform');
+    final conditionalPath = path.join(
+      _targetPath,
+      '{{#$platform}}my_plugin_$platform{{',
+      '$platform}}',
+    );
+
+    Directory(conditionalPath).createSync(recursive: true);
+    await Shell.cp('$directoryPath/', '$conditionalPath/');
+    await Shell.rm(directoryPath);
+  }
 
   await Future.wait(
     Directory(_targetPath)
@@ -89,6 +147,11 @@ void main() async {
                 'A very good Flutter federated plugin',
                 '{{{description}}}',
               )
+              .replaceAll(_pluginPlatforms, '{{> plugin_platforms.dart }}')
+              .replaceAll(
+                _pluginDependencies,
+                '{{> plugin_dependencies.dart }}',
+              )
           : contents;
       file = templatedContents is String
           ? await file.writeAsString(templatedContents)
@@ -117,13 +180,13 @@ void main() async {
   // Clean up top-level directories
   const topLevelDirs = [
     'my_plugin',
-    'my_plugin_android',
-    'my_plugin_ios',
-    'my_plugin_linux',
-    'my_plugin_macos',
+    '{{#android}}my_plugin_android{{',
+    '{{#ios}}my_plugin_ios{{',
+    '{{#linux}}my_plugin_linux{{',
+    '{{#macos}}my_plugin_macos{{',
     'my_plugin_platform_interface',
-    'my_plugin_web',
-    'my_plugin_windows',
+    '{{#web}}my_plugin_web{{',
+    '{{#windows}}my_plugin_windows{{',
   ];
   for (final dir in topLevelDirs) {
     Directory(path.join(_targetPath, dir)).deleteSync(recursive: true);
