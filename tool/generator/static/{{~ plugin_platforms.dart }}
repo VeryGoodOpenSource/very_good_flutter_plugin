@@ -1,17 +1,15 @@
 flutter:
   plugin:
     platforms:{{#android}}
-      {{project_name.snakeCase()}}_android:
-        path: ../{{project_name.snakeCase()}}_android{{/android}}{{#ios}}
-      {{project_name.snakeCase()}}_ios:
-        path: ../{{project_name.snakeCase()}}_ios{{/ios}}{{#linux}}
-      {{project_name.snakeCase()}}_linux:
-        path: ../{{project_name.snakeCase()}}_linux{{/linux}}{{#macos}}
-      {{project_name.snakeCase()}}_macos:
-        path: ../{{project_name.snakeCase()}}_macos{{/macos}}
-      {{project_name.snakeCase()}}_platform_interface:
-        path: ../{{project_name.snakeCase()}}_platform_interface{{#web}}
-      {{project_name.snakeCase()}}_web:
-        path: ../{{project_name.snakeCase()}}_web{{/web}}{{#windows}}
-      {{project_name.snakeCase()}}_windows:
-        path: ../{{project_name.snakeCase()}}_windows{{/windows}}
+      android:
+        default_package: {{project_name.snakeCase()}}_android{{/android}}{{#ios}}
+      ios:
+        default_package: {{project_name.snakeCase()}}_ios{{/ios}}{{#linux}}
+      linux:
+        default_package: {{project_name.snakeCase()}}_linux{{/linux}}{{#macos}}
+      macos:
+        default_package: {{project_name.snakeCase()}}_macos{{/macos}}{{#web}}
+      web:
+        default_package: {{project_name.snakeCase()}}_web{{/web}}{{#windows}}
+      windows:
+        default_package: {{project_name.snakeCase()}}_windows{{/windows}}
