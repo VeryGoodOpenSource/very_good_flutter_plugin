@@ -143,6 +143,7 @@ void main() async {
               .replaceAll('my-plugin', '{{project_name.paramCase()}}')
               .replaceAll('MyPlugin', '{{project_name.pascalCase()}}')
               .replaceAll('myPlugin', '{{project_name.camelCase()}}')
+              .replaceAll('MY_PLUGIN', '{{project_name.constantCase()}}')
               .replaceAll(
                 'A very good Flutter federated plugin',
                 '{{{description}}}',
