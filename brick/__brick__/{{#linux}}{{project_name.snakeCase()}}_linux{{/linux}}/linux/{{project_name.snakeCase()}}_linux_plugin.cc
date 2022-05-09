@@ -45,7 +45,7 @@ static void fl_{{project_name.snakeCase()}}_plugin_class_init(Fl{{project_name.p
 }
 
 Fl{{project_name.pascalCase()}}Plugin* fl_{{project_name.snakeCase()}}_plugin_new(FlPluginRegistrar* registrar) {
-  Fl{{project_name.pascalCase()}}Plugin* self = FL_MY_PLUGIN_PLUGIN(
+  Fl{{project_name.pascalCase()}}Plugin* self = FL_{{project_name.constantCase()}}_PLUGIN(
       g_object_new(fl_{{project_name.snakeCase()}}_plugin_get_type(), nullptr));
 
   self->registrar = FL_PLUGIN_REGISTRAR(g_object_ref(registrar));
