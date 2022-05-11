@@ -17,11 +17,11 @@ jobs:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
     with:
       flutter_channel: stable
-      flutter_version: 2.10.1
+      flutter_version: 3.0.0
       working_directory: src/{{project_name.snakeCase()}}
 
   android:
-    runs-on: macos-10.15
+    runs-on: macos-latest
 
     defaults:
       run:
@@ -66,7 +66,7 @@ jobs:
           working-directory: src/{{project_name.snakeCase()}}/example
 
   ios:
-    runs-on: macos-10.15
+    runs-on: macos-latest
 
     defaults:
       run:
@@ -113,7 +113,7 @@ jobs:
         run: xvfb-run flutter test integration_test -d linux
 
   macos:
-    runs-on: macos-10.15
+    runs-on: macos-latest
 
     defaults:
       run:
@@ -134,7 +134,7 @@ jobs:
         run: flutter test integration_test -d macos
 
   web:
-    runs-on: macos-10.15
+    runs-on: macos-latest
 
     defaults:
       run:
