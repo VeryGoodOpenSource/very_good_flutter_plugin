@@ -134,7 +134,7 @@ jobs:
         run: flutter test integration_test -d macos
 
   web:
-    runs-on: macos-10.15
+    runs-on: macos-latest
 
     defaults:
       run:
