@@ -52,9 +52,9 @@ final _targetMyPluginKtPath = path.join(
   '{{org_name.pathCase()}}',
   '{{project_name.pascalCase()}}Plugin.kt',
 );
-final year = DateTime.now().year;
+
 final copyrightHeader = '''
-// Copyright (c) $year, Very Good Ventures
+// Copyright (c) {{current_year}}, Very Good Ventures
 // https://verygood.ventures
 //
 // Use of this source code is governed by an MIT-style
@@ -152,6 +152,10 @@ void main() async {
               .replaceAll(
                 _pluginDependencies,
                 '{{> plugin_dependencies.dart }}',
+              )
+              .replaceAll(
+                'Copyright (c) 2022 Very Good Ventures',
+                'Copyright (c) {{current_year}} Very Good Ventures',
               )
           : contents;
       file = templatedContents is String
