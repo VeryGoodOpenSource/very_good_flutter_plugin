@@ -105,18 +105,50 @@ void main() async {
     excludedFiles.map((file) => File(file).delete(recursive: true)),
   );
 
+  Future<void> fixConditional(String from, String to) async {
+    Directory(to).createSync(recursive: true);
+    await Shell.cp('$from/', '$to/');
+    await Shell.rm(from);
+  }
+
   // Add conditionals to platforms
   for (final platform in platforms) {
-    final directoryPath = path.join(_targetPath, 'my_plugin_$platform');
-    final conditionalPath = path.join(
+    // Make plugin platform dependencies conditional
+    final platformPath = path.join(_targetPath, 'my_plugin_$platform');
+    final conditionalPlatformPath = path.join(
       _targetPath,
       '{{#$platform}}my_plugin_$platform{{',
       '$platform}}',
     );
+    await fixConditional(platformPath, conditionalPlatformPath);
 
-    Directory(conditionalPath).createSync(recursive: true);
-    await Shell.cp('$directoryPath/', '$conditionalPath/');
-    await Shell.rm(directoryPath);
+    // Make the example platforms conditional
+    final examplePlatform = path.join(
+      _targetPath,
+      'my_plugin',
+      'example',
+      platform,
+    );
+    final conditionalExamplePlatform = path.join(
+      _targetPath,
+      'my_plugin',
+      'example',
+      '{{#$platform}}$platform{{',
+      '$platform}}',
+    );
+    await fixConditional(examplePlatform, conditionalExamplePlatform);
+
+    // Make the workflow files conditional
+    final workflows = path.join(_targetPath, '.github', 'workflows');
+    final workflowFile = File(path.join(workflows, 'my_plugin_$platform.yaml'));
+    File(path.join(
+      workflows,
+      '{{#$platform}}my_plugin_$platform.yaml{{',
+      '$platform}}',
+    ))
+      ..createSync(recursive: true)
+      ..writeAsBytesSync(workflowFile.readAsBytesSync());
+    await workflowFile.delete();
   }
 
   await Future.wait(
@@ -192,6 +224,14 @@ void main() async {
     'my_plugin_platform_interface',
     '{{#web}}my_plugin_web{{',
     '{{#windows}}my_plugin_windows{{',
+    '.github/workflows/{{#android}}my_plugin_android.yaml{{',
+    '.github/workflows/{{#ios}}my_plugin_ios.yaml{{',
+    '.github/workflows/{{#linux}}my_plugin_linux.yaml{{',
+    '.github/workflows/{{#macos}}my_plugin_macos.yaml{{',
+    '.github/workflows/my_plugin_platform_interface.yaml',
+    '.github/workflows/my_plugin.yaml',
+    '.github/workflows/{{#web}}my_plugin_web.yaml{{',
+    '.github/workflows/{{#windows}}my_plugin_windows.yaml{{',
   ];
   for (final dir in topLevelDirs) {
     Directory(path.join(_targetPath, dir)).deleteSync(recursive: true);
