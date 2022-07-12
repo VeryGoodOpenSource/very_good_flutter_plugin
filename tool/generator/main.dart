@@ -151,6 +151,47 @@ void main() async {
     await workflowFile.delete();
   }
 
+  final appTest = File(path.join(
+    _targetPath,
+    'my_plugin',
+    'example',
+    'integration_test',
+    'app_test.dart',
+  ));
+
+  appTest.writeAsStringSync(
+    appTest
+        .readAsStringSync()
+        .replaceAll(
+          "  if (isWeb) return 'Web';\n",
+          "{{#web}}  if (isWeb) return 'Web';\n{{/web}}",
+        )
+        .replaceAll(
+          "  if (Platform.isAndroid) return 'Android';\n",
+          "{{#android}}  if (Platform.isAndroid) return 'Android';\n{{/android}}",
+        )
+        .replaceAll(
+          "  if (Platform.isIOS) return 'iOS';\n",
+          "{{#ios}}  if (Platform.isIOS) return 'iOS';\n{{/ios}}",
+        )
+        .replaceAll(
+          "  if (Platform.isLinux) return 'Linux';\n",
+          "{{#linux}}  if (Platform.isLinux) return 'Linux';\n{{/linux}}",
+        )
+        .replaceAll(
+          "  if (Platform.isMacOS) return 'MacOS';\n",
+          "{{#macos}}  if (Platform.isMacOS) return 'MacOS';\n{{/macos}}",
+        )
+        .replaceAll(
+          "  if (Platform.isWindows) return 'Windows';\n",
+          "{{#windows}}  if (Platform.isWindows) return 'Windows';\n{{/windows}}",
+        )
+        .replaceAll(
+          'bool get isWeb => identical(0, 0.0);\n',
+          '{{#web}}bool get isWeb => identical(0, 0.0);\n{{/web}}',
+        ),
+  );
+
   await Future.wait(
     Directory(_targetPath)
         .listSync(recursive: true)
