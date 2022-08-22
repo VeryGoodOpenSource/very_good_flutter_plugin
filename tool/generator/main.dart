@@ -302,10 +302,6 @@ class Shell {
   static Future<void> mkdir(String destination) {
     return _Cmd.run('mkdir', ['-p', destination]);
   }
-
-  static Future<void> mv(String source, String destination) {
-    return _Cmd.run('mv', [source, destination]);
-  }
 }
 
 class _Cmd {
