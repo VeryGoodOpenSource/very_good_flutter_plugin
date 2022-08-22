@@ -87,7 +87,7 @@ In addition, there are E2E tests as part of the `my_plugin` workflow to ensure t
 
 [build_status_badge]: https://github.com/VeryGoodOpenSource/very_good_flutter_plugin/actions/workflows/my_plugin.yaml/badge.svg
 [build_status_link]: https://github.com/VeryGoodOpenSource/very_good_flutter_plugin/actions/workflows/my_plugin.yaml
-[coverage_badge]: src/my_plugin/coverage_badge.svg
+[coverage_badge]: src/my_plugin/my_plugin/coverage_badge.svg
 [flutter_install_link]: https://flutter.dev/docs/get-started/install
 [github_actions_link]: https://docs.github.com/en/actions/learn-github-actions
 [github_workflow_link]: https://docs.github.com/en/enterprise-cloud@latest/actions/using-workflows

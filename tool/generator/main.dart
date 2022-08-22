@@ -38,7 +38,8 @@ final _staticPath = path.join('tool', 'generator', 'static');
 final _githubPath = path.join('.github');
 final _sourcePath = path.join('src');
 final _targetPath = path.join('brick', '__brick__');
-final _androidPath = path.join(_targetPath, 'my_plugin_android', 'android');
+final _androidPath =
+    path.join(_targetPath, 'my_plugin', 'my_plugin_android', 'android');
 final _androidKotlinPath = path.join(_androidPath, 'src', 'main', 'kotlin');
 final _sourceMyPluginKtPath = path.join(
   _androidKotlinPath,
@@ -74,11 +75,12 @@ const platforms = [
 final excludedFiles = [
   path.join(
     _targetPath,
+    'my_plugin',
     '.github',
     'workflows',
     'generate_template.yaml',
   ),
-  path.join(_targetPath, '.github', 'CODEOWNERS'),
+  path.join(_targetPath, 'my_plugin', '.github', 'CODEOWNERS'),
 ];
 
 void main() async {
@@ -91,7 +93,7 @@ void main() async {
   // Copy Project Files
   await Future.wait([
     Shell.cp(_sourcePath, _targetPath),
-    Shell.cp(_githubPath, path.join(_targetPath)),
+    Shell.cp(_githubPath, path.join(_targetPath, 'my_plugin')),
     Shell.cp('$_staticPath/', _targetPath),
     () async {
       await Shell.mkdir(File(_targetMyPluginKtPath).parent.path);
@@ -114,9 +116,14 @@ void main() async {
   // Add conditionals to platforms
   for (final platform in platforms) {
     // Make plugin platform dependencies conditional
-    final platformPath = path.join(_targetPath, 'my_plugin_$platform');
+    final platformPath = path.join(
+      _targetPath,
+      'my_plugin',
+      'my_plugin_$platform',
+    );
     final conditionalPlatformPath = path.join(
       _targetPath,
+      'my_plugin',
       '{{#$platform}}my_plugin_$platform{{',
       '$platform}}',
     );
@@ -126,11 +133,13 @@ void main() async {
     final examplePlatform = path.join(
       _targetPath,
       'my_plugin',
+      'my_plugin',
       'example',
       platform,
     );
     final conditionalExamplePlatform = path.join(
       _targetPath,
+      'my_plugin',
       'my_plugin',
       'example',
       '{{#$platform}}$platform{{',
@@ -139,7 +148,8 @@ void main() async {
     await fixConditional(examplePlatform, conditionalExamplePlatform);
 
     // Make the workflow files conditional
-    final workflows = path.join(_targetPath, '.github', 'workflows');
+    final workflows =
+        path.join(_targetPath, 'my_plugin', '.github', 'workflows');
     final workflowFile = File(path.join(workflows, 'my_plugin_$platform.yaml'));
     File(path.join(
       workflows,
@@ -153,6 +163,7 @@ void main() async {
 
   final appTest = File(path.join(
     _targetPath,
+    'my_plugin',
     'my_plugin',
     'example',
     'integration_test',
@@ -256,27 +267,7 @@ void main() async {
   );
 
   // Clean up top-level directories
-  const topLevelDirs = [
-    'my_plugin',
-    '{{#android}}my_plugin_android{{',
-    '{{#ios}}my_plugin_ios{{',
-    '{{#linux}}my_plugin_linux{{',
-    '{{#macos}}my_plugin_macos{{',
-    'my_plugin_platform_interface',
-    '{{#web}}my_plugin_web{{',
-    '{{#windows}}my_plugin_windows{{',
-    '.github/workflows/{{#android}}my_plugin_android.yaml{{',
-    '.github/workflows/{{#ios}}my_plugin_ios.yaml{{',
-    '.github/workflows/{{#linux}}my_plugin_linux.yaml{{',
-    '.github/workflows/{{#macos}}my_plugin_macos.yaml{{',
-    '.github/workflows/my_plugin_platform_interface.yaml',
-    '.github/workflows/my_plugin.yaml',
-    '.github/workflows/{{#web}}my_plugin_web.yaml{{',
-    '.github/workflows/{{#windows}}my_plugin_windows.yaml{{',
-  ];
-  for (final dir in topLevelDirs) {
-    Directory(path.join(_targetPath, dir)).deleteSync(recursive: true);
-  }
+  Directory(path.join(_targetPath, 'my_plugin')).deleteSync(recursive: true);
 }
 
 class Shell {

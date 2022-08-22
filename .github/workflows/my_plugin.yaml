@@ -4,13 +4,13 @@ on:
   pull_request:
     paths:
       - ".github/workflows/my_plugin.yaml"
-      - "src/my_plugin/**"
+      - "src/my_plugin/my_plugin/**"
   push:
     branches:
       - main
     paths:
       - ".github/workflows/my_plugin.yaml"
-      - "src/my_plugin/**"
+      - "src/my_plugin/my_plugin/**"
 
 jobs:
   build:
@@ -18,14 +18,14 @@ jobs:
     with:
       flutter_channel: stable
       flutter_version: 3.0.0
-      working_directory: src/my_plugin
+      working_directory: src/my_plugin/my_plugin
 
   android:
     runs-on: macos-latest
 
     defaults:
       run:
-        working-directory: src/my_plugin/example
+        working-directory: src/my_plugin/my_plugin/example
 
     steps:
       - uses: actions/checkout@v2
@@ -63,14 +63,14 @@ jobs:
         with:
           api-level: 29
           script: flutter test integration_test
-          working-directory: src/my_plugin/example
+          working-directory: src/my_plugin/my_plugin/example
 
   ios:
     runs-on: macos-latest
 
     defaults:
       run:
-        working-directory: src/my_plugin/example
+        working-directory: src/my_plugin/my_plugin/example
 
     steps:
       - uses: actions/checkout@v2
@@ -91,7 +91,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: src/my_plugin/example
+        working-directory: src/my_plugin/my_plugin/example
 
     steps:
       - uses: actions/checkout@v2
@@ -117,7 +117,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: src/my_plugin/example
+        working-directory: src/my_plugin/my_plugin/example
 
     steps:
       - uses: actions/checkout@v2
@@ -138,7 +138,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: src/my_plugin/example
+        working-directory: src/my_plugin/my_plugin/example
 
     steps:
       - uses: actions/checkout@v2
@@ -164,7 +164,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: src/my_plugin/example
+        working-directory: src/my_plugin/my_plugin/example
 
     steps:
       - uses: actions/checkout@v2
