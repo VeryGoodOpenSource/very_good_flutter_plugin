@@ -4,13 +4,13 @@ on:
   pull_request:
     paths:
       - ".github/workflows/{{project_name.snakeCase()}}.yaml"
-      - "src/{{project_name.snakeCase()}}/**"
+      - "src/{{project_name.snakeCase()}}/{{project_name.snakeCase()}}/**"
   push:
     branches:
       - main
     paths:
       - ".github/workflows/{{project_name.snakeCase()}}.yaml"
-      - "src/{{project_name.snakeCase()}}/**"
+      - "src/{{project_name.snakeCase()}}/{{project_name.snakeCase()}}/**"
 
 jobs:
   build:
@@ -18,14 +18,14 @@ jobs:
     with:
       flutter_channel: stable
       flutter_version: 3.0.0
-      working_directory: src/{{project_name.snakeCase()}}
+      working_directory: src/{{project_name.snakeCase()}}/{{project_name.snakeCase()}}
 
   android:
     runs-on: macos-latest
 
     defaults:
       run:
-        working-directory: src/{{project_name.snakeCase()}}/example
+        working-directory: src/{{project_name.snakeCase()}}/{{project_name.snakeCase()}}/example
 
     steps:
       - uses: actions/checkout@v2
@@ -63,14 +63,14 @@ jobs:
         with:
           api-level: 29
           script: flutter test integration_test
-          working-directory: src/{{project_name.snakeCase()}}/example
+          working-directory: src/{{project_name.snakeCase()}}/{{project_name.snakeCase()}}/example
 
   ios:
     runs-on: macos-latest
 
     defaults:
       run:
-        working-directory: src/{{project_name.snakeCase()}}/example
+        working-directory: src/{{project_name.snakeCase()}}/{{project_name.snakeCase()}}/example
 
     steps:
       - uses: actions/checkout@v2
@@ -91,7 +91,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: src/{{project_name.snakeCase()}}/example
+        working-directory: src/{{project_name.snakeCase()}}/{{project_name.snakeCase()}}/example
 
     steps:
       - uses: actions/checkout@v2
@@ -117,7 +117,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: src/{{project_name.snakeCase()}}/example
+        working-directory: src/{{project_name.snakeCase()}}/{{project_name.snakeCase()}}/example
 
     steps:
       - uses: actions/checkout@v2
@@ -138,7 +138,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: src/{{project_name.snakeCase()}}/example
+        working-directory: src/{{project_name.snakeCase()}}/{{project_name.snakeCase()}}/example
 
     steps:
       - uses: actions/checkout@v2
@@ -164,7 +164,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: src/{{project_name.snakeCase()}}/example
+        working-directory: src/{{project_name.snakeCase()}}/{{project_name.snakeCase()}}/example
 
     steps:
       - uses: actions/checkout@v2
