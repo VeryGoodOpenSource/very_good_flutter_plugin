@@ -36,6 +36,8 @@ flutter:
 
 final _staticPath = path.join('tool', 'generator', 'static');
 final _githubPath = path.join('.github');
+final _gitHubWorkflowsPath =
+    path.join(_targetPath, 'my_plugin', '.github', 'workflows');
 final _sourcePath = path.join('src');
 final _targetPath = path.join('brick', '__brick__');
 final _androidPath =
@@ -148,11 +150,11 @@ void main() async {
     await fixConditional(examplePlatform, conditionalExamplePlatform);
 
     // Make the workflow files conditional
-    final workflows =
-        path.join(_targetPath, 'my_plugin', '.github', 'workflows');
-    final workflowFile = File(path.join(workflows, 'my_plugin_$platform.yaml'));
+    final workflowFile = File(
+      path.join(_gitHubWorkflowsPath, 'my_plugin_$platform.yaml'),
+    );
     File(path.join(
-      workflows,
+      _gitHubWorkflowsPath,
       '{{#$platform}}my_plugin_$platform.yaml{{',
       '$platform}}',
     ))
@@ -215,6 +217,11 @@ void main() async {
       if (path.extension(file.path) == '.dart') {
         final contents = await file.readAsString();
         file = await file.writeAsString('$copyrightHeader\n$contents');
+      }
+
+      if (path.isWithin(_gitHubWorkflowsPath, file.path)) {
+        final contents = file.readAsStringSync();
+        file.writeAsStringSync(contents.replaceAll('src/my_plugin/', ''));
       }
 
       // Template File Contents
