@@ -14,9 +14,10 @@ A Very Good federated Flutter plugin created by Very Good Ventures 🦄.
 - ✅ Federated Plugin Architecture
 - ✅ Configurable Platforms (Android, iOS, MacOS, Linux, Web, Windows)
 - ✅ GitHub Workflow powered by [Very Good Workflows][very_good_workflows_link]
+- ✅ Strict lint rules powered by [Very Good Analysis][very_good_analysis_link]
 - ✅ Pull Request Template
 - ✅ Issue Templates
-- ✅ Strict lint rules powered by [Very Good Analysis][very_good_analysis_link]
+- ✅ Dependabot Integration
 - ✅ 100% Test Coverage
 - ✅ Fully Documented Public API
 - ✅ MIT License
@@ -72,5 +73,6 @@ A Very Good federated Flutter plugin created by Very Good Ventures 🦄.
 [license_link]: https://opensource.org/licenses/MIT
 [logo_white]: https://raw.githubusercontent.com/VGVentures/very_good_brand/main/styles/README/vgv_logo_white.png
 [mason_link]: https://github.com/felangel/mason
+[very_good_analysis_link]: https://pub.dev/packages/very_good_analysis
 [very_good_ventures_link]: https://verygood.ventures
 [very_good_workflows_link]: https://github.com/VeryGoodOpenSource/very_good_workflows

@@ -1,3 +1,9 @@
+# 0.1.0+1
+
+- docs: minor README updates
+  - add dependabot integration
+  - fix broken link to very_good_analysis
+
 # 0.1.0
 
 - feat: upgrade to Flutter 3.3.1
