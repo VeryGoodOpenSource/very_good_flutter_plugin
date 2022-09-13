@@ -224,6 +224,23 @@ void main() async {
         file.writeAsStringSync(contents.replaceAll('src/my_plugin/', ''));
       }
 
+      if (path.basename(file.path) == 'dependabot.yaml') {
+        file.writeAsStringSync(
+          '''
+version: 2
+enable-beta-ecosystems: true
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/"
+    schedule:
+      interval: "daily"''',
+        );
+      }
+
       // Template File Contents
       final contents =
           file.isAsset() ? await file.readAsBytes() : await file.readAsString();
