@@ -1,12 +1,7 @@
 version: 2
-enable-beta-ecosystems: true
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
-    schedule:
-      interval: "daily"
-  - package-ecosystem: "pub"
-    directory: "/src/my_plugin"
     schedule:
       interval: "daily"
   - package-ecosystem: "pub"
@@ -15,5 +10,41 @@ updates:
       interval: "daily"
   - package-ecosystem: "pub"
     directory: "/tool/generator"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/src/my_plugin/my_plugin_android"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/src/my_plugin/my_plugin_platform_interface"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/src/my_plugin/my_plugin_linux"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/src/my_plugin/my_plugin_web"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/src/my_plugin/my_plugin/example"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/src/my_plugin/my_plugin"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/src/my_plugin/my_plugin_ios"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/src/my_plugin/my_plugin_windows"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/src/my_plugin/my_plugin_macos"
     schedule:
       interval: "daily"
