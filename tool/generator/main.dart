@@ -109,6 +109,33 @@ void main() async {
     excludedFiles.map((file) => File(file).delete(recursive: true)),
   );
 
+  // Apply patches
+  await Future.wait(
+    Directory('patches').listSync(recursive: true).whereType<File>().map(
+      (file) async {
+        final process = await Process.start('git', ['apply']);
+
+        final patchFile = file.readAsStringSync();
+
+        late String content;
+        if (path.basename(file.path).startsWith('workflow')) {
+          content = patchFile.replaceAll(
+            '.github',
+            path.join(_targetPath, 'my_plugin', '.github'),
+          );
+        } else {
+          content = patchFile.replaceAll('src', _targetPath);
+        }
+
+        process.stdin.write(content);
+        await process.stdin.close();
+
+        await process.exitCode;
+      },
+    ),
+  );
+
+
   Future<void> fixConditional(String from, String to) async {
     Directory(to).createSync(recursive: true);
     await Shell.cp('$from/', '$to/');

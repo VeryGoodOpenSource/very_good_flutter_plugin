@@ -19,3 +19,7 @@ jobs:
       flutter_channel: stable
       flutter_version: 3.3.2
       working_directory: {{project_name.snakeCase()}}_linux
+{{#publishable}}
+  pana:
+    uses: VeryGoodOpenSource/very_good_workflows/brick/__brick__/{{project_name.snakeCase()}}/.github/workflows/pana.yml@v1
+{{/publishable}}

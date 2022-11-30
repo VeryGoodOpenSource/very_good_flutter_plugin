@@ -1,0 +1,13 @@
+diff --git a/src/my_plugin/my_plugin_macos/pubspec.yaml b/src/my_plugin/my_plugin_macos/pubspec.yaml
+index c818576..56c7486 100644
+--- a/src/my_plugin/my_plugin_macos/pubspec.yaml
++++ b/src/my_plugin/my_plugin_macos/pubspec.yaml
+@@ -1,7 +1,7 @@
+ name: my_plugin_macos
+ description: MacOS implementation of the my_plugin plugin
+ version: 0.1.0+1
+-publish_to: none
++{{^publishable}}publish_to: none{{/publishable}}
+
+ environment:
+   sdk: ">=2.18.0 <3.0.0"
