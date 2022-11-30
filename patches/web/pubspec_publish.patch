@@ -1,10 +1,10 @@
-diff --git a/src/my_plugin/my_plugin_android/pubspec.yaml b/src/my_plugin/my_plugin_android/pubspec.yaml
+diff --git a/src/my_plugin/my_plugin_web/pubspec.yaml b/src/my_plugin/my_plugin_web/pubspec.yaml
 index 01d5686..e28b047 100644
---- a/src/my_plugin/my_plugin_android/pubspec.yaml
-+++ b/src/my_plugin/my_plugin_android/pubspec.yaml
+--- a/src/my_plugin/my_plugin_web/pubspec.yaml
++++ b/src/my_plugin/my_plugin_web/pubspec.yaml
 @@ -1,7 +1,7 @@
- name: my_plugin_android
- description: Android implementation of the my_plugin plugin
+ name: my_plugin_web
+ description: Web implementation of the my_plugin plugin
  version: 0.1.0+1
 -publish_to: none
 +{{^publishable}}publish_to: none{{/publishable}}
