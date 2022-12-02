@@ -251,10 +251,6 @@ updates:
                 _pluginDependencies,
                 '{{> plugin_dependencies.dart }}',
               )
-              .replaceAll(
-                'Copyright (c) 2022 Very Good Ventures',
-                'Copyright (c) {{current_year}} Very Good Ventures',
-              )
           : contents;
       file = templatedContents is String
           ? await file.writeAsString(templatedContents)
