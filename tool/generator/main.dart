@@ -56,15 +56,6 @@ final _targetMyPluginKtPath = path.join(
   '{{project_name.pascalCase()}}Plugin.kt',
 );
 
-final copyrightHeader = '''
-// Copyright (c) {{current_year}}, Very Good Ventures
-// https://verygood.ventures
-//
-// Use of this source code is governed by an MIT-style
-// license that can be found in the LICENSE file or at
-// https://opensource.org/licenses/MIT.
-''';
-
 const platforms = [
   'android',
   'ios',
@@ -213,10 +204,9 @@ void main() async {
       var file = _;
       if (!file.existsSync()) return;
 
-      // Add copyright header to all .dart files
-      if (path.extension(file.path) == '.dart') {
-        final contents = await file.readAsString();
-        file = await file.writeAsString('$copyrightHeader\n$contents');
+      if (path.basename(file.path) == 'LICENSE') {
+        await file.delete(recursive: true);
+        return;
       }
 
       if (path.isWithin(_gitHubWorkflowsPath, file.path)) {
