@@ -1,3 +1,10 @@
+// Copyright (c) {{current_year}}, Very Good Ventures
+// https://verygood.ventures
+//
+// Use of this source code is governed by an MIT-style
+// license that can be found in the LICENSE file or at
+// https://opensource.org/licenses/MIT.
+
 import 'package:flutter_test/flutter_test.dart';
 import 'package:{{project_name.snakeCase()}}_platform_interface/{{project_name.snakeCase()}}_platform_interface.dart';
 import 'package:{{project_name.snakeCase()}}_web/{{project_name.snakeCase()}}_web.dart';
