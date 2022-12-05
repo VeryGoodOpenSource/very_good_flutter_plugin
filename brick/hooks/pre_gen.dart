@@ -13,5 +13,4 @@ void run(HookContext context) {
   for (final platform in availablePlatforms) {
     context.vars[platform] = selectedPlatforms.contains(platform);
   }
-  context.vars['current_year'] = DateTime.now().year;
 }
