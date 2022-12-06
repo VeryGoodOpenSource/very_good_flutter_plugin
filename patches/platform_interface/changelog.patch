@@ -1,6 +1,6 @@
-diff --git a/src/my_plugin/my_plugin_platform_interface/CHANGELOG.md "b/src/my_plugin/my_plugin_platform_interface/{{#publishable}}CHANGELOG.md{{\\publishable}}"
+diff --git a/src/my_plugin/my_plugin_platform_interface/CHANGELOG.md "b/src/my_plugin/my_plugin_platform_interface/{{#publishable}}CHANGELOG.md{{/publishable}}"
 similarity index 100%
 rename from src/my_plugin/my_plugin_platform_interface/CHANGELOG.md
-rename to "src/my_plugin/my_plugin_platform_interface/{{#publishable}}CHANGELOG.md{{\\publishable}}"
+rename to "src/my_plugin/my_plugin_platform_interface/{{#publishable}}CHANGELOG.md{{/publishable}}"
 
 
