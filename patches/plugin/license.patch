@@ -1,4 +1,0 @@
-diff --git a/src/my_plugin/my_plugin/LICENSE "b/src/my_plugin/my_plugin/{{#publishable}}LICENSE{{\\publishable}}"
-similarity index 100%
-rename from src/my_plugin/my_plugin/LICENSE
-rename to "src/my_plugin/my_plugin/{{#publishable}}LICENSE{{\\publishable}}"
