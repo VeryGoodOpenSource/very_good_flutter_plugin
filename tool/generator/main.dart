@@ -126,7 +126,6 @@ void main() async {
     ),
   );
 
-
   Future<void> fixConditional(String from, String to) async {
     Directory(to).createSync(recursive: true);
     await Shell.cp('$from/', '$to/');
@@ -238,7 +237,12 @@ void main() async {
 
       if (path.isWithin(_gitHubWorkflowsPath, file.path)) {
         final contents = file.readAsStringSync();
-        file.writeAsStringSync(contents.replaceAll('src/my_plugin/', ''));
+        file.writeAsStringSync(
+          contents.replaceAll('src/my_plugin/', '').replaceFirst(
+                r'group: ${{ github.workflow }}-${{ github.ref }}',
+                r'group: ${{#mustacheCase}}github.workflow{{/mustacheCase}}-${{#mustacheCase}}github.ref{{/mustacheCase}}',
+              ),
+        );
       }
 
       if (path.basename(file.path) == 'dependabot.yaml') {
