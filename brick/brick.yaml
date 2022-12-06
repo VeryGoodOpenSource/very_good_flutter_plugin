@@ -40,3 +40,8 @@ vars:
       - macos
       - web
       - windows
+  publishable:
+    type: boolean
+    description: Whether the generated package is intended to be published.
+    default: false
+    prompt: Will the package be published?

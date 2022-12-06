@@ -1,0 +1,4 @@
+diff --git a/src/my_plugin/my_plugin_windows/CHANGELOG.md "b/src/my_plugin/my_plugin_windows/{{#publishable}}CHANGELOG.md{{\\publishable}}"
+similarity index 100%
+rename from src/my_plugin/my_plugin_windows/CHANGELOG.md
+rename to "src/my_plugin/my_plugin_windows/{{#publishable}}CHANGELOG.md{{\\publishable}}"

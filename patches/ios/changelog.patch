@@ -1,0 +1,5 @@
+diff --git a/src/my_plugin/my_plugin_ios/CHANGELOG.md "b/src/my_plugin/my_plugin_ios/{{#publishable}}CHANGELOG.md{{\\publishable}}"
+similarity index 100%
+rename from src/my_plugin/my_plugin_ios/CHANGELOG.md
+rename to "src/my_plugin/my_plugin_ios/{{#publishable}}CHANGELOG.md{{\\publishable}}"
+

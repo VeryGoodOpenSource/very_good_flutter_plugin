@@ -1,0 +1,12 @@
+diff --git a/.github/workflows/my_plugin_web.yaml b/.github/workflows/my_plugin_web.yaml
+index 157bfdc..91934d4 100644
+--- a/.github/workflows/my_plugin_web.yaml
++++ b/.github/workflows/my_plugin_web.yaml
+@@ -19,3 +19,7 @@ jobs:
+       flutter_channel: stable
+       flutter_version: 3.3.2
+       working_directory: src/my_plugin/my_plugin_web
++{{#publishable}}
++  pana:
++    uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/pana.yml@v1
++{{/publishable}}
