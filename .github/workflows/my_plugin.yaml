@@ -25,7 +25,7 @@ jobs:
       working_directory: src/my_plugin/my_plugin
 
   android:
-    runs-on: macos-11
+    runs-on: macos-latest
 
     defaults:
       run:
@@ -70,7 +70,7 @@ jobs:
           working-directory: src/my_plugin/my_plugin/example
 
   ios:
-    runs-on: macos-11
+    runs-on: macos-latest
 
     defaults:
       run:
@@ -85,7 +85,11 @@ jobs:
         run: flutter doctor -v
 
       - name: Start Simulator
-        run: open -a Simulator.app
+        # Start an iPhone simulator
+        run: |
+          UDID=$(xcrun xctrace list devices | grep "^iPhone" | awk '{gsub(/[()]/,""); print $NF}' | head -n 1)
+          echo $UDID
+          xcrun simctl boot "${UDID:?No Simulator with this name found}"
 
       - name: Integration Tests
         run: flutter test integration_test -d iPhone
@@ -117,7 +121,7 @@ jobs:
         run: xvfb-run flutter test integration_test -d linux
 
   macos:
-    runs-on: macos-11
+    runs-on: macos-latest
 
     defaults:
       run:
@@ -138,7 +142,7 @@ jobs:
         run: flutter test integration_test -d macos
 
   web:
-    runs-on: macos-11
+    runs-on: macos-latest
 
     defaults:
       run:
