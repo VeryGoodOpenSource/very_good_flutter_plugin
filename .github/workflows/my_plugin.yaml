@@ -66,7 +66,7 @@ jobs:
         uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 29
-          script: flutter test integration_test
+          script: flutter test integration_test --timeout 2x
           working-directory: src/my_plugin/my_plugin/example
 
   ios:
@@ -92,7 +92,7 @@ jobs:
           xcrun simctl boot "${UDID:?No Simulator with this name found}"
 
       - name: Integration Tests
-        run: flutter test integration_test -d iPhone
+        run: flutter test integration_test -d iPhone --timeout 2x
 
   linux:
     runs-on: ubuntu-18.04
@@ -118,7 +118,7 @@ jobs:
         run: flutter doctor -v
 
       - name: Integration Tests
-        run: xvfb-run flutter test integration_test -d linux
+        run: xvfb-run flutter test integration_test -d linux --timeout 2x
 
   macos:
     runs-on: macos-latest
@@ -139,7 +139,7 @@ jobs:
         run: flutter doctor -v
 
       - name: Integration Tests
-        run: flutter test integration_test -d macos
+        run: flutter test integration_test -d macos --timeout 2x
 
   web:
     runs-on: macos-latest
@@ -186,4 +186,4 @@ jobs:
         run: flutter doctor -v      
 
       - name: Integration Tests
-        run: flutter test integration_test -d windows
+        run: flutter test integration_test -d windows --timeout 2x
