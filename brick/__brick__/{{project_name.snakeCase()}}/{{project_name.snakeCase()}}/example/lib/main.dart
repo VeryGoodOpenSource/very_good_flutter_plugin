@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
             else
               Text(
                 'Platform Name: $_platformName',
-                style: Theme.of(context).textTheme.headline5,
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
             const SizedBox(height: 16),
             ElevatedButton(
