@@ -4,7 +4,7 @@ index 73ac9c9..ede6122 100644
 +++ b/.github/workflows/my_plugin_windows.yaml
 @@ -19,3 +19,7 @@ jobs:
        flutter_channel: stable
-       flutter_version: 3.3.2
+       flutter_version: 3.7.1
        working_directory: src/my_plugin/my_plugin_windows
 +{{#publishable}}
 +  pana:
