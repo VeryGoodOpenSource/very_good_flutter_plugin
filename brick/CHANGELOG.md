@@ -1,3 +1,7 @@
+# 0.3.0
+
+- feat: upgrade to flutter 3.7.1
+
 # 0.2.1
 
 - fix: windows path resolution
