@@ -26,7 +26,7 @@ jobs:
 
   android:
     runs-on: macos-latest
-    if: false # TODO: Integration tests are flaky since Flutter 3.7.0
+    if: false # TODO: Integration tests are flaky since Flutter 3.7.1
 
     defaults:
       run:
@@ -97,7 +97,7 @@ jobs:
 
   linux:
     runs-on: ubuntu-18.04
-    if: false # TODO: Integration tests are flaky since Flutter 3.7.0
+    if: false # TODO: Integration tests are flaky since Flutter 3.7.1
 
     defaults:
       run:
@@ -124,7 +124,7 @@ jobs:
 
   macos:
     runs-on: macos-latest
-    if: false # TODO: Macos tests are flaky since Flutter 3.7.0
+    if: false # TODO: Macos tests are flaky since Flutter 3.7.1
 
     defaults:
       run:
