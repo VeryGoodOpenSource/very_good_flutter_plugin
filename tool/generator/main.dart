@@ -245,6 +245,7 @@ void main() async {
         );
       }
 
+      // generate dependabot
       if (path.basename(file.path) == 'dependabot.yaml') {
         file.writeAsStringSync(
           '''
@@ -256,10 +257,30 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: "pub"
-    directory: "/"
+    directory: "/my_plugin"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/my_plugin/example"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "/my_plugin_platform_interface"
     schedule:
       interval: "daily"''',
         );
+
+        for (final platform in platforms) {
+          file.writeAsStringSync(
+            '''
+{{#$platform}}
+  - package-ecosystem: "pub"
+    directory: "/my_plugin_$platform"
+    schedule:
+      interval: "daily"{{/$platform}}''',
+            mode: FileMode.append,
+          );
+        }
       }
 
       // Template File Contents
