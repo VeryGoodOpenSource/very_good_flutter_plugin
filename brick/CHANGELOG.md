@@ -1,3 +1,9 @@
+# 0.3.2
+
+- feat: update workflows, dependabot generation, add spellcheck
+- fix: integration tests
+- feat: use swift in iOS plugin
+
 # 0.3.1
 
 - feat: upgrade to `very_good_analysis 4.0.0`
