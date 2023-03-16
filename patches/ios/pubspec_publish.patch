@@ -10,4 +10,4 @@ index 7e884b1..e4923b9 100644
 +{{^publishable}}publish_to: none{{/publishable}}
 
  environment:
-   sdk: ">=2.19.0 <3.0.0"
+   sdk: ">=2.18.0 <3.0.0"
