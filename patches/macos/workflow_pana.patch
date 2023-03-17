@@ -4,7 +4,7 @@ index 6e13220..5e20190 100644
 +++ b/.github/workflows/my_plugin_macos.yaml
 @@ -19,3 +19,7 @@ jobs:
        flutter_channel: stable
-       flutter_version: 3.3.0
+       flutter_version: 3.7.1
        working_directory: src/my_plugin/my_plugin_macos
 +{{#publishable}}
 +  pana:
