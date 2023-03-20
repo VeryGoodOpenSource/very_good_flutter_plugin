@@ -4,7 +4,7 @@ index b336f54..043beb6 100644
 +++ b/.github/workflows/my_plugin_platform_interface.yaml
 @@ -19,3 +19,7 @@ jobs:
        flutter_channel: stable
-       flutter_version: 3.7.1
+       flutter_version: 3.3.10
        working_directory: src/my_plugin/my_plugin_platform_interface
 +{{#publishable}}
 +  pana:

@@ -1,6 +1,7 @@
 name: my_plugin_windows
 description: Windows implementation of the my_plugin plugin
 version: 0.1.0+1
+publish_to: none
 
 environment:
   sdk: ">=2.18.0 <3.0.0"

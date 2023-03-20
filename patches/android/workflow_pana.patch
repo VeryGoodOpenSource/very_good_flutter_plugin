@@ -4,7 +4,7 @@ index 1f38a07..9116a1b 100644
 +++ b/.github/workflows/my_plugin_android.yaml
 @@ -19,3 +19,7 @@ jobs:
        flutter_channel: stable
-       flutter_version: 3.7.1
+       flutter_version: 3.3.10
        working_directory: src/my_plugin/my_plugin_android
 +{{#publishable}}
 +  pana:
