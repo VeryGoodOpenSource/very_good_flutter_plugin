@@ -1,3 +1,9 @@
+# 0.3.3
+
+- chore: fix generator run
+- fix: updated regex matching
+- chore: support dart sdk 2.18.0
+
 # 0.3.2
 
 - feat: update workflows, dependabot generation, add spellcheck
