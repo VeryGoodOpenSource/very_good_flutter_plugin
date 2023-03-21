@@ -111,8 +111,11 @@ void main() async {
         late String content;
         if (path.basename(file.path).startsWith('workflow')) {
           content = patchFile.replaceAll(
-            '\w*(?<!VeryGoodOpenSource/very_good_workflows/).github',
-            path.join(_targetPath, 'my_plugin', '.github'),
+            'a/.github',
+            path.join('a/', _targetPath, 'my_plugin', '.github'),
+          ).replaceAll(
+            'b/.github',
+            path.join('b/', _targetPath, 'my_plugin', '.github'),
           );
         } else {
           content = patchFile.replaceAll('src', _targetPath);

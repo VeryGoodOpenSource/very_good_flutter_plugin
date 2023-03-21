@@ -4,7 +4,7 @@ index c9a46df..c08e551 100644
 +++ b/.github/workflows/my_plugin_linux.yaml
 @@ -19,3 +19,7 @@ jobs:
        flutter_channel: stable
-       flutter_version: 3.3.0
+       flutter_version: 3.3.10
        working_directory: src/my_plugin/my_plugin_linux
 +{{#publishable}}
 +  pana:
