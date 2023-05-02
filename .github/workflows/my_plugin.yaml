@@ -170,9 +170,8 @@ jobs:
 
       - name: Run Chromedriver
         run: |
-          git clone https://github.com/VeryGoodOpenSource/web_installers
+          git clone https://github.com/felangel/web_installers
           cd web_installers/packages/web_drivers
-          git switch patch-2
           dart pub get
           dart lib/web_driver_installer.dart chromedriver --install-only
           ./chromedriver/chromedriver --port=4444 &
