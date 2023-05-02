@@ -30,7 +30,7 @@ jobs:
     uses: VeryGoodOpenSource/very_good_workflows/.github/workflows/flutter_package.yml@v1
     with:
       flutter_channel: stable
-      flutter_version: 3.3.10
+      flutter_version: 3.7.0
       working_directory: {{project_name.snakeCase()}}
 {{#publishable}}
   pana:
@@ -199,7 +199,7 @@ jobs:
         run: flutter config --enable-windows-desktop
 
       - name: Flutter Doctor
-        run: flutter doctor -v      
+        run: flutter doctor -v
 
       - name: Integration Tests
         run: flutter test integration_test -d windows
