@@ -15,7 +15,7 @@ void main() {
       myPlugin = MyPluginAndroid();
 
       log = <MethodCall>[];
-      TestDefaultBinaryMessengerBinding.instance!.defaultBinaryMessenger
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
           .setMockMethodCallHandler(myPlugin.methodChannel, (methodCall) async {
         log.add(methodCall);
         switch (methodCall.method) {

@@ -15,7 +15,7 @@ void main() {
       myPlugin = MyPluginLinux();
 
       log = <MethodCall>[];
-      TestDefaultBinaryMessengerBinding.instance!.defaultBinaryMessenger
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
           .setMockMethodCallHandler(myPlugin.methodChannel, (methodCall) async {
         log.add(methodCall);
         switch (methodCall.method) {
