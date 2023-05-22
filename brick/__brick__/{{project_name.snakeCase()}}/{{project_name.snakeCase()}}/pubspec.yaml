@@ -4,7 +4,7 @@ version: 0.1.0+1
 {{^publishable}}publish_to: none{{/publishable}}
 
 environment:
-  sdk: ">=2.19.0 <3.0.0"
+  sdk: ">=3.0.0 <4.0.0"
 
 {{> plugin_platforms.dart }}
 
@@ -18,4 +18,4 @@ dev_dependencies:
     sdk: flutter
   mocktail: ^0.3.0
   plugin_platform_interface: ^2.0.0
-  very_good_analysis: ^4.0.0
+  very_good_analysis: ^5.0.0
