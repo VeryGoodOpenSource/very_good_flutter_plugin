@@ -11,8 +11,11 @@ void main() {
     final log = <MethodCall>[];
 
     setUp(() async {
-      methodChannelMyPlugin = MethodChannelMyPlugin()
-        ..methodChannel.setMockMethodCallHandler((MethodCall methodCall) async {
+      methodChannelMyPlugin = MethodChannelMyPlugin();
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(
+        methodChannelMyPlugin.methodChannel,
+        (methodCall) async {
           log.add(methodCall);
           switch (methodCall.method) {
             case 'getPlatformName':
@@ -20,7 +23,8 @@ void main() {
             default:
               return null;
           }
-        });
+        },
+      );
     });
 
     tearDown(log.clear);
