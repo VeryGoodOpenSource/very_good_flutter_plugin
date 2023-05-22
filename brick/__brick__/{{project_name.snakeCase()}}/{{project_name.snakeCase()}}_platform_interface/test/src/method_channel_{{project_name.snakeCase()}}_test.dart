@@ -11,8 +11,11 @@ void main() {
     final log = <MethodCall>[];
 
     setUp(() async {
-      methodChannel{{project_name.pascalCase()}} = MethodChannel{{project_name.pascalCase()}}()
-        ..methodChannel.setMockMethodCallHandler((MethodCall methodCall) async {
+      methodChannel{{project_name.pascalCase()}} = MethodChannel{{project_name.pascalCase()}}();
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(
+        methodChannel{{project_name.pascalCase()}}.methodChannel,
+        (methodCall) async {
           log.add(methodCall);
           switch (methodCall.method) {
             case 'getPlatformName':
@@ -20,7 +23,8 @@ void main() {
             default:
               return null;
           }
-        });
+        },
+      );
     });
 
     tearDown(log.clear);
