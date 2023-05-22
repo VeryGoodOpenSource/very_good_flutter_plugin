@@ -15,7 +15,7 @@ void main() {
       {{project_name.camelCase()}} = {{project_name.pascalCase()}}Linux();
 
       log = <MethodCall>[];
-      TestDefaultBinaryMessengerBinding.instance!.defaultBinaryMessenger
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
           .setMockMethodCallHandler({{project_name.camelCase()}}.methodChannel, (methodCall) async {
         log.add(methodCall);
         switch (methodCall.method) {
