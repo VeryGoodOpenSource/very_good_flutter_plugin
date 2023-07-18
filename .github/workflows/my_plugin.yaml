@@ -133,7 +133,7 @@ jobs:
 
   macos:
     runs-on: macos-latest
-    # if: false # TODO: Macos tests are flaky, see https://github.com/VeryGoodOpenSource/very_good_flutter_plugin/issues/79
+    if: false # TODO: Macos tests are flaky, see https://github.com/VeryGoodOpenSource/very_good_flutter_plugin/issues/79
 
     defaults:
       run:
