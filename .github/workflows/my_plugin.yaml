@@ -132,7 +132,7 @@ jobs:
         run: xvfb-run flutter test integration_test -d linux
 
   macos:
-    runs-on: macos-latest
+    runs-on: macos-13
 
     defaults:
       run:
