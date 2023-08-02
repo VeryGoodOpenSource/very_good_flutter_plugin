@@ -105,7 +105,7 @@ jobs:
         run: fluttium test flows/test_platform_name.yaml -d iPhone
 
   linux:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
 
     defaults:
       run:
