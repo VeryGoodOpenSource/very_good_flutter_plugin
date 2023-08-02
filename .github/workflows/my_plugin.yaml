@@ -145,7 +145,7 @@ jobs:
         run: fluttium test flows/test_platform_name.yaml -d macos
 
   web:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     defaults:
       run:
