@@ -12,6 +12,8 @@ Developed with 💙 by [Very Good Ventures][very_good_ventures_link] 🦄
 
 A Very Good Flutter Plugin created by the [Very Good Ventures Team][very_good_ventures_link].
 
+---
+
 ## Getting Started 🚀
 
 **❗ In order to start using Very Good Flutter Plugin you must have the [Flutter SDK][flutter_install_link] installed on your machine.**
@@ -38,32 +40,13 @@ The plugin supports the following platforms:
 
 ### Generating a Custom Plugin 📦
 
-This repository powers the `flutter_plugin` template exposed via [Very Good CLI][very_good_cli_link].
+The Very Good Flutter Plugin template is available through an independent [mason][mason_link] brick or via the [Very Good CLI][very_good_cli_link].
 
 If you have not previously installed Very Good CLI, you can install it via:
 
-```sh
-dart pub global activate very_good_cli
-```
+### Very Good CLI usage
 
-A custom plugin can be generated via the `create` command:
-
-```sh
-very_good create my_plugin -t flutter_plugin
-```
-
-A custom description and org name can be also be provided via:
-
-```sh
-very_good create my_plugin -t flutter_plugin --desc "My custom description" --org-name com.example.my_plugin
-```
-
-By default, the generated plugin supports all platforms specified above. To disable support for specific platforms use the platform flags:
-
-```sh
-# Exclude Windows and Linux support
-very_good create my_plugin -t flutter_plugin --windows false --linux false
-```
+Very Good CLI usage docs are available [here][cli_docs_usage]. 
 
 ## Testing 🧪
 
@@ -103,3 +86,4 @@ In addition, there are E2E tests as part of the `my_plugin` workflow to ensure t
 [very_good_ventures_link]: https://verygood.ventures
 [very_good_ventures_link_dark]: https://verygood.ventures#gh-dark-mode-only
 [very_good_ventures_link_light]: https://verygood.ventures#gh-light-mode-only
+[cli_docs_usage]: https://cli.vgv.dev/docs/templates/federated_plugin
