@@ -48,6 +48,22 @@ If you have not previously installed Very Good CLI, you can install it via:
 
 Very Good CLI usage docs are available [here][cli_docs_usage]. 
 
+
+### Using the brick directly
+
+1. Install [mason][mason_link]
+
+   `dart pub global activate mason_cli`
+
+2. Add the brick
+
+   `mason add -g very_good_flutter_plugin`
+
+3. Make a new Wear OS app
+
+   `mason make very_good_flutter_plugin`
+
+
 ## Testing 🧪
 
 Very Good Flutter Plugin ships with 100% code coverage. To learn more about why we believe 100% code coverage is important and other testing best practices [read our guide to Flutter testing][very_good_testing_blog_link].
