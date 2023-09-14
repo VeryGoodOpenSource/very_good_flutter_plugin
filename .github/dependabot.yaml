@@ -33,6 +33,10 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: "pub"
+    directory: "/src/my_plugin/my_plugin/example/actions/check_platform_name"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
     directory: "/src/my_plugin/my_plugin"
     schedule:
       interval: "daily"

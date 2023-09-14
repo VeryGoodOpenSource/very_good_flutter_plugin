@@ -12,6 +12,8 @@ Developed with 💙 by [Very Good Ventures][very_good_ventures_link] 🦄
 
 A Very Good Flutter Plugin created by the [Very Good Ventures Team][very_good_ventures_link].
 
+---
+
 ## Getting Started 🚀
 
 **❗ In order to start using Very Good Flutter Plugin you must have the [Flutter SDK][flutter_install_link] installed on your machine.**
@@ -38,32 +40,29 @@ The plugin supports the following platforms:
 
 ### Generating a Custom Plugin 📦
 
-This repository powers the `flutter_plugin` template exposed via [Very Good CLI][very_good_cli_link].
+The Very Good Flutter Plugin template is available through an independent [mason][mason_link] brick or via the [Very Good CLI][very_good_cli_link].
 
 If you have not previously installed Very Good CLI, you can install it via:
 
-```sh
-dart pub global activate very_good_cli
-```
+### Very Good CLI usage
 
-A custom plugin can be generated via the `create` command:
+Very Good CLI usage docs are available [here][cli_docs_usage]. 
 
-```sh
-very_good create my_plugin -t flutter_plugin
-```
 
-A custom description and org name can be also be provided via:
+### Using the brick directly
 
-```sh
-very_good create my_plugin -t flutter_plugin --desc "My custom description" --org-name com.example.my_plugin
-```
+1. Install [mason][mason_link]
 
-By default, the generated plugin supports all platforms specified above. To disable support for specific platforms use the platform flags:
+   `dart pub global activate mason_cli`
 
-```sh
-# Exclude Windows and Linux support
-very_good create my_plugin -t flutter_plugin --windows false --linux false
-```
+2. Add the brick
+
+   `mason add -g very_good_flutter_plugin`
+
+3. Make a new Wear OS app
+
+   `mason make very_good_flutter_plugin`
+
 
 ## Testing 🧪
 
@@ -88,6 +87,7 @@ In addition, there are E2E tests as part of the `my_plugin` workflow to ensure t
 [build_status_badge]: https://github.com/VeryGoodOpenSource/very_good_flutter_plugin/actions/workflows/my_plugin.yaml/badge.svg
 [build_status_link]: https://github.com/VeryGoodOpenSource/very_good_flutter_plugin/actions/workflows/my_plugin.yaml
 [coverage_badge]: src/my_plugin/my_plugin/coverage_badge.svg
+[mason_link]: https://github.com/felangel/mason
 [flutter_install_link]: https://flutter.dev/docs/get-started/install
 [github_actions_link]: https://docs.github.com/en/actions/learn-github-actions
 [github_workflow_link]: https://docs.github.com/en/enterprise-cloud@latest/actions/using-workflows
@@ -103,3 +103,4 @@ In addition, there are E2E tests as part of the `my_plugin` workflow to ensure t
 [very_good_ventures_link]: https://verygood.ventures
 [very_good_ventures_link_dark]: https://verygood.ventures#gh-dark-mode-only
 [very_good_ventures_link_light]: https://verygood.ventures#gh-light-mode-only
+[cli_docs_usage]: https://cli.vgv.dev/docs/templates/federated_plugin

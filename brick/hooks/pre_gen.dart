@@ -7,7 +7,7 @@ void run(HookContext context) {
     'macos',
     'linux',
     'web',
-    'windows'
+    'windows',
   ];
   final selectedPlatforms = context.vars['platforms'] as List;
   for (final platform in availablePlatforms) {
