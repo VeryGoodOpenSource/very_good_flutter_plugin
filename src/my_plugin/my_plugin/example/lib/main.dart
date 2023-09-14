@@ -40,10 +40,12 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () async {
+                if (!context.mounted) return;
                 try {
                   final result = await getPlatformName();
                   setState(() => _platformName = result);
                 } catch (error) {
+                  if (!context.mounted) return;
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       backgroundColor: Theme.of(context).primaryColor,
