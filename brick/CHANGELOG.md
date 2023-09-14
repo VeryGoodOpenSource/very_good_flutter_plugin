@@ -1,3 +1,10 @@
+# 0.6.0
+
+- fix: flaky integrated tests
+- feat: upgrade to `very_good_analysis ^5.1.0`
+- feat: add fluttium test workflow
+- docs: add docs for integration tests
+
 # 0.5.0
 
 - feat!: bump min Dart SDK to 3.0.0
