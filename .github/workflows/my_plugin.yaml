@@ -34,7 +34,6 @@ jobs:
       working_directory: src/my_plugin/my_plugin
 
   android:
-    if: false # TODO(wolfen): takes too long
     runs-on: macos-latest
 
     defaults:
