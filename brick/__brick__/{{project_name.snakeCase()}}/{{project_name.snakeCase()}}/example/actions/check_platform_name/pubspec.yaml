@@ -11,7 +11,7 @@ dependencies:
   fluttium: ^0.1.0
 
 dev_dependencies:
-  very_good_analysis: ^5.0.0
   flutter_test:
     sdk: flutter
   mocktail: ^1.0.0
+  very_good_analysis: ^5.1.0
