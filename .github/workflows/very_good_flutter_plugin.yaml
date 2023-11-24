@@ -50,24 +50,28 @@ jobs:
         run: |
           dart pub global activate mason_cli
           mason get
+          mason make very_good_flutter_plugin -c brick/config.json -o output --on-conflict overwrite --platforms ${{ matrix.platform }}
 
       - name: 📦 Install Dependencies
         run: |
           dart pub global activate very_good_cli
-          very_good packages get --recursive output/test_plugin
+          very_good packages get --recursive output
 
       - name: ✨ Check Formatting
-        run: dart format --set-exit-if-changed output/test_plugin
+        run: dart format --set-exit-if-changed output
 
       - name: 🕵️ Analyze
-        run: dart analyze --fatal-infos --fatal-warnings output/test_plugin
+        run: dart analyze --fatal-infos --fatal-warnings output
 
       - name: 🧪 Run Tests
         run: |
-          cd output/test_plugin
+          cd output
           very_good test -j 4 --recursive --optimization --coverage --test-randomize-ordering-seed random
+
+      - name: 📑 Combine Code Coverage
+        run: dart run ../tool/merge-coverage/merge-coverage.dart
 
       - name: 📊 Check Code Coverage
         uses: VeryGoodOpenSource/very_good_coverage@v2
         with:
-          path: output/test_plugin/coverage/lcov.info
+          path: output/coverage/lcov.info
