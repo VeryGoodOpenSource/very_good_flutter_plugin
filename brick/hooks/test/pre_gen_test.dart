@@ -28,7 +28,7 @@ void main() {
         expect(vars[androidVariable], isTrue);
       });
 
-      test('is set to true if it is not in `platforms` variable', () {
+      test('is set to false if it is not in `platforms` variable', () {
         final vars = <String, dynamic>{
           'platforms': <String>[],
         };
@@ -54,7 +54,7 @@ void main() {
         expect(vars[iosVariable], isTrue);
       });
 
-      test('is set to true if it is not in `platforms` variable', () {
+      test('is set to false if it is not in `platforms` variable', () {
         final vars = <String, dynamic>{
           'platforms': <String>[],
         };
@@ -80,7 +80,7 @@ void main() {
         expect(vars[macOsVariable], isTrue);
       });
 
-      test('is set to true if it is not in `platforms` variable', () {
+      test('is set to false if it is not in `platforms` variable', () {
         final vars = <String, dynamic>{
           'platforms': <String>[],
         };
@@ -106,7 +106,7 @@ void main() {
         expect(vars[linuxVariable], isTrue);
       });
 
-      test('is set to true if it is not in `platforms` variable', () {
+      test('is set to false if it is not in `platforms` variable', () {
         final vars = <String, dynamic>{
           'platforms': <String>[],
         };
@@ -132,7 +132,7 @@ void main() {
         expect(vars[webVariable], isTrue);
       });
 
-      test('is set to true if it is not in `platforms` variable', () {
+      test('is set to false if it is not in `platforms` variable', () {
         final vars = <String, dynamic>{
           'platforms': <String>[],
         };
@@ -158,7 +158,7 @@ void main() {
         expect(vars[windowsVariable], isTrue);
       });
 
-      test('is set to true if it is not in `platforms` variable', () {
+      test('is set to false if it is not in `platforms` variable', () {
         final vars = <String, dynamic>{
           'platforms': <String>[],
         };
