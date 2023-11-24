@@ -1,3 +1,13 @@
+/// Merges all coverage files into one.
+///
+/// This is used as part of the GitHub `very_good_flutter_plugin` workflow to
+/// merge all coverage files into one so that the coverage report and compared
+/// with the coverage threshold.
+///
+/// Should be removed once the following Very Good CLI issue is resolved:
+/// https://github.com/VeryGoodOpenSource/very_good_cli/issues/804
+library merge_coverage;
+
 import 'dart:io';
 
 import 'package:glob/glob.dart';
