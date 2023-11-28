@@ -5,6 +5,8 @@ environment:
 
 dependencies:
   mason: ^0.1.0-dev.50
+  meta: ^1.11.0
+  path: ^1.8.3
 
 dev_dependencies:
   very_good_analysis: ^5.1.0
