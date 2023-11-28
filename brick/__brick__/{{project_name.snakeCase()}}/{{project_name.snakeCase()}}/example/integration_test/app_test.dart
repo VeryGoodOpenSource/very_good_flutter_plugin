@@ -29,6 +29,6 @@ String expectedPlatformName() {
 {{/macos}}{{#windows}}  if (Platform.isWindows) return 'Windows';
 {{/windows}}  throw UnsupportedError('Unsupported platform ${Platform.operatingSystem}');
 }
-
-{{#web}}bool get isWeb => identical(0, 0.0);
+{{#web}}
+bool get isWeb => identical(0, 0.0);
 {{/web}}
