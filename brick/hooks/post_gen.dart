@@ -19,8 +19,8 @@ typedef RunProcess = Future<ProcessResult> Function(
 });
 
 Future<void> run(HookContext context,
-// We intentionally ignore the trailing comma until the following mason issue is
-// fixed: https://github.com/felangel/mason/issues/1169
+// TODO(alestiago): We intentionally ignore the trailing comma until
+// the following mason issue is fixed: https://github.com/felangel/mason/issues/1169
 // ignore: require_trailing_commas
     {@visibleForTesting RunProcess runProcess = Process.run}) async {
   final progress = context.logger.progress('Getting Flutter dependencies');
@@ -49,15 +49,27 @@ Future<void> run(HookContext context,
     );
   }
 
-  progress.update('Fixing Dart imports ordering...');
+  progress.update('Fixing Dart imports ordering');
+  await _fixDirectivesOrdering(runProcess: runProcess);
 
-  // Some imports are relative to the user specified package name, hence
-  // we try to fix the import directive ordering after the template has
-  // been generated.
-  //
-  // We only fix for the [directives_ordering](https://dart.dev/tools/linter-rules/directives_ordering)
-  // linter rules, as the other rule should be tackled by the template itself.
-  await runProcess(
+  progress.update('Fixing long lines');
+  await _fixLinesLongerThan80Chars(runProcess: runProcess);
+
+  progress.complete('Completed post-generation');
+}
+
+/// Fixes, using `dart fix`, the ordering of the Dart imports.
+///
+/// Some imports are relative to the user specified package name, hence
+/// we try to fix the import directive ordering after the template has
+/// been generated to avoid analysis issues.
+///
+/// We explicitly fix for the [directives_ordering](https://dart.dev/tools/linter-rules/directives_ordering)
+/// linter rules, as other rules should be tackled by the template itself.
+Future<ProcessResult> _fixDirectivesOrdering({
+  required RunProcess runProcess,
+}) async {
+  return runProcess(
     'dart',
     [
       'fix',
@@ -66,6 +78,27 @@ Future<void> run(HookContext context,
     ],
     workingDirectory: Directory.current.path,
   );
+}
 
-  progress.complete('Completed post-generation');
+/// Fixes, using `dart format`, the lines longer than 80 characters.
+///
+/// Some lines are relative to the user specified package name, hence if the
+/// name is sufficiently long it will break the 80 characters limit.
+///
+/// We explicitly fix for the [lines_longer_than_80_chars](https://dart.dev/tools/linter-rules/lines_longer_than_80_chars)
+/// linter rules, as other rules should be tackled by the template itself.
+Future<ProcessResult> _fixLinesLongerThan80Chars({
+  required RunProcess runProcess,
+}) async {
+  // TODO(alestiago): Should explicitly solve for the linter rule
+  // `lines_longer_than_80_chars` as soon as the following issue is fixed:
+  // https://github.com/dart-lang/dart_style/issues/1334
+  return runProcess(
+    'dart',
+    [
+      'format',
+      '.',
+    ],
+    workingDirectory: Directory.current.path,
+  );
 }
