@@ -42,7 +42,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
           distribution: "temurin"
           java-version: "11"
@@ -53,7 +53,7 @@ jobs:
         run: flutter pub global activate fluttium_cli
 
       - name: AVD Cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         id: avd-cache
         with:
           path: |

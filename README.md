@@ -46,8 +46,7 @@ If you have not previously installed Very Good CLI, you can install it via:
 
 ### Very Good CLI usage
 
-Very Good CLI usage docs are available [here][cli_docs_usage]. 
-
+Very Good CLI usage docs are available [here][cli_docs_usage].
 
 ### Using the brick directly
 
@@ -59,10 +58,9 @@ Very Good CLI usage docs are available [here][cli_docs_usage].
 
    `mason add -g very_good_flutter_plugin`
 
-3. Make a new Wear OS app
+3. Make a new Very Good Flutter Plugin
 
    `mason make very_good_flutter_plugin`
-
 
 ## Testing 🧪
 
