@@ -58,9 +58,15 @@ jobs:
           very_good packages get --recursive output
 
       - name: ✨ Check Formatting
+        # TODO(alestiago): Enable once the following is merged:
+        # https://github.com/VeryGoodOpenSource/very_good_flutter_plugin/pull/151
+        if: false
         run: dart format --set-exit-if-changed output
 
       - name: 🕵️ Analyze
+        # TODO(alestiago): Enable once the following is merged:
+        # https://github.com/VeryGoodOpenSource/very_good_flutter_plugin/pull/151
+        if: false
         run: dart analyze --fatal-infos --fatal-warnings output
 
       - name: 🧪 Run Tests
