@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:mason/mason.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:test/test.dart';
-import 'package:very_good_start_hooks/cli/cli.dart';
+import 'package:very_good_flutter_plugin_hooks/src/cli/cli.dart';
 
 class _TestProcess {
   Future<ProcessResult> run(
