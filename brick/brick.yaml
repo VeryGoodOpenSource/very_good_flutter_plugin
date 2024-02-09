@@ -45,3 +45,9 @@ vars:
     description: Whether the generated package is intended to be published.
     default: false
     prompt: Will the package be published?
+  dart_fix_output:
+    type: boolean
+    description: >-
+      Whether or not the generated Dart output files should be fixed and formatted.
+    default: false
+    prompt: Should the generated output fix and format Dart files?
