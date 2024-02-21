@@ -42,11 +42,17 @@ void main() {
     });
 
     test('show correct description', () {
-      final action = CheckPlatformName();
+      final action = CheckPlatformName(
+        isAndroid: () => true,
+        isIOS: () => false,
+        isLinux: () => false,
+        isMacOS: () => false,
+        isWindows: () => false,
+      );
 
       expect(
         action.description(),
-        equals('Check platform name: "Hello World"'),
+        equals('Check platform name: "Android"'),
       );
     });
   });
