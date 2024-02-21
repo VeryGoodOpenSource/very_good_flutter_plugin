@@ -15,12 +15,12 @@ import 'package:fluttium/fluttium.dart';
 class CheckPlatformName extends Action {
   /// {@macro check_platform_name}
   const CheckPlatformName({
-    bool Function() isAndroid = _platformIsAndroid,
-    bool Function() isIOS = _platformIsIOS,
-    bool Function() isLinux = _platformIsLinux,
-    bool Function() isMacOS = _platformIsMacOS,
-    bool Function() isWindows = _platformIsWindows,
-    bool isWeb = kIsWeb,
+    @visibleForTesting bool Function() isAndroid = _platformIsAndroid,
+    @visibleForTesting bool Function() isIOS = _platformIsIOS,
+    @visibleForTesting bool Function() isLinux = _platformIsLinux,
+    @visibleForTesting bool Function() isMacOS = _platformIsMacOS,
+    @visibleForTesting bool Function() isWindows = _platformIsWindows,
+    @visibleForTesting bool isWeb = kIsWeb,
   })  : _isAndroid = isAndroid,
         _isIOS = isIOS,
         _isLinux = isLinux,
