@@ -49,13 +49,12 @@ jobs:
       - name: 🧱 Mason Make
         run: |
           dart pub global activate mason_cli
+          dart pub global activate very_good_cli
           mason get
           mason make very_good_flutter_plugin -c brick/config.json -o output --on-conflict overwrite --platforms ${{ matrix.platform }}
 
       - name: 📦 Install Dependencies
-        run: |
-          dart pub global activate very_good_cli
-          very_good packages get --recursive output
+        run: very_good packages get --recursive output
 
       - name: ✨ Check Formatting
         run: dart format --set-exit-if-changed output
