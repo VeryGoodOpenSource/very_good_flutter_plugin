@@ -1,4 +1,3 @@
-.DS_Store
 .atom/
 .idea/
 .vscode/
@@ -46,3 +45,11 @@ build/
 .project
 .classpath
 .settings
+
+# Files and directories created by mason
+.mason/
+mason-lock.json
+output/
+
+# Files and directories created by MacOS
+.DS_Store
