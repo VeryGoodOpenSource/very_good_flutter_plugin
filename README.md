@@ -1,11 +1,19 @@
 # Very Good Flutter Plugin
 
+## 🚶‍♂️ [Repository has moved](https://github.com/VeryGoodOpenSource/very_good_templates/tree/main/very_good_flutter_plugin)
+
+The Very Good Flutter Plugin template is now developed within the [Very Good Templates](https://github.com/VeryGoodOpenSource/very_good_templates) repository, and can be found at [very_good_templates/very_good_flutter_plugin](https://github.com/VeryGoodOpenSource/very_good_templates/tree/main/very_good_flutter_plugin).
+
+Please file new issues on
+[Very Good Templates](https://github.com/VeryGoodOpenSource/very_good_templates).
+
+---
+
 [![Very Good Ventures][logo_white]][very_good_ventures_link_dark]
 [![Very Good Ventures][logo_black]][very_good_ventures_link_light]
 
 Developed with 💙 by [Very Good Ventures][very_good_ventures_link] 🦄
 
-[![my_plugin][build_status_badge]][build_status_link]
 ![coverage][coverage_badge]
 [![style: very good analysis][very_good_analysis_badge]][very_good_analysis_link]
 [![License: MIT][license_badge]][license_link]
@@ -84,7 +92,7 @@ In addition, there are E2E tests as part of the `my_plugin` workflow to ensure t
 
 [build_status_badge]: https://github.com/VeryGoodOpenSource/very_good_flutter_plugin/actions/workflows/my_plugin.yaml/badge.svg
 [build_status_link]: https://github.com/VeryGoodOpenSource/very_good_flutter_plugin/actions/workflows/my_plugin.yaml
-[coverage_badge]: src/my_plugin/my_plugin/coverage_badge.svg
+[coverage_badge]: brick/__brick__/{{project_name.snakeCase()}}/{{project_name.snakeCase()}}/coverage_badge.svg
 [mason_link]: https://github.com/felangel/mason
 [flutter_install_link]: https://flutter.dev/docs/get-started/install
 [github_actions_link]: https://docs.github.com/en/actions/learn-github-actions
