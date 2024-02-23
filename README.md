@@ -2,7 +2,7 @@
 
 ## 🚶‍♂️ [Repository has moved](https://github.com/VeryGoodOpenSource/very_good_templates/tree/main/very_good_flutter_plugin)
 
-The Very Good Core template is now developed within the [Very Good Templates](https://github.com/VeryGoodOpenSource/very_good_templates) repository, and can be found at [very_good_templates/very_good_flutter_plugin](https://github.com/VeryGoodOpenSource/very_good_templates/tree/main/very_good_flutter_plugin).
+The Very Good Flutter Plugin template is now developed within the [Very Good Templates](https://github.com/VeryGoodOpenSource/very_good_templates) repository, and can be found at [very_good_templates/very_good_flutter_plugin](https://github.com/VeryGoodOpenSource/very_good_templates/tree/main/very_good_flutter_plugin).
 
 Please file new issues on
 [Very Good Templates](https://github.com/VeryGoodOpenSource/very_good_templates).
