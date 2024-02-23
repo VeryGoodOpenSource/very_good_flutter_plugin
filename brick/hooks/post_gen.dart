@@ -6,7 +6,7 @@ import 'package:very_good_flutter_plugin_hooks/src/cli/cli.dart';
 
 /// The key for the `dartFixOutput` context variable.
 @visibleForTesting
-const dartFixOutputVariableKey = 'dartFixOutput';
+const dartFixOutputVariableKey = 'dart_fix_output';
 
 Future<void> run(
   HookContext context, {
