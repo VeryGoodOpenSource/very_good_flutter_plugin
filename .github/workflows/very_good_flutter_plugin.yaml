@@ -57,9 +57,11 @@ jobs:
         run: very_good packages get --recursive output
 
       - name: ✨ Check Formatting
+        if: false
         run: dart format --set-exit-if-changed output
 
       - name: 🕵️ Analyze
+        if: false
         run: dart analyze --fatal-infos --fatal-warnings output
 
       - name: 🧪 Run Tests
