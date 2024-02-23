@@ -3,5 +3,6 @@
   "org_name": "very_good_ventures",
   "application_id": "verygood.ventures.test",
   "description": "A generated Very Good Flutter Plugin",
-  "publishable": false
+  "publishable": false,
+  "dartFixOutput": true
 }
