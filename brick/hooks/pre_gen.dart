@@ -11,7 +11,6 @@ void run(HookContext context) {
   ];
   final selectedPlatformsVar = context.vars['platforms'];
 
-  // TODO(alestiago): Test this new parsing logic:
   late final List<dynamic> selectedPlatforms;
   if (selectedPlatformsVar is String) {
     selectedPlatforms = selectedPlatformsVar.split(',')
