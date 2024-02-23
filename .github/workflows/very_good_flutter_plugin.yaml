@@ -85,3 +85,5 @@ jobs:
         uses: VeryGoodOpenSource/very_good_coverage@v2
         with:
           path: output/coverage/lcov.info
+          # TODO(alestiago): Set to 100.
+          min_coverage: 86
